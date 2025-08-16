@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gospel Worship Ministry</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0A0A0A;
+            --secondary: #121212;
+            --accent: linear-gradient(90deg, #FF00E6 0%, #FFFFFF 50%, #0066FF 100%);
+            --text: #FFFFFF;
+            --text-secondary: #CCCCCC;
+            --contact-gray: #888888;
+            --text-shadow: 0 0 15px rgba(255,255,255,0.4);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--primary);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+        }
+        
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        
+        .nav-links a:hover {
+            background: var(--accent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .connect-button {
+            padding: 8px 25px;
+            background: var(--accent);
+            color: var(--primary);
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            margin-left: 20px;
+        }
+        
+        .connect-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 102, 255, 0.5);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            text-align: left;
+            padding: 0 10%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.7)), url('https://i.ibb.co/84z7kvrq/promise-dan.jpg') no-repeat center center/cover;
+            z-index: -1;
+        }
+        
+        .hero-text {
+            max-width: 650px;
+            margin-bottom: 30px;
+        }
+        
+        .hero h2 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            line-height: 1.5;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--text);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        
+        .hero .scripture {
+            font-style: italic;
+            margin: 20px 0;
+            padding-left: 20px;
+            border-left: 2px solid;
+            border-image: var(--accent);
+            border-image-slice: 1;
+        }
+        
+        .hero-name {
+            position: absolute;
+            right: 10%;
+            bottom: 15%;
+            font-size: 4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: transparent;
+            background: var(--accent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-shadow: var(--text-shadow);
+            letter-spacing: 4px;
+        }
+        
+        /* Sections */
+        section {
+            padding: 100px 10%;
+        }
+        
+        .section-title {
+            text-align: left;
+            margin-bottom: 60px;
+            font-size: 2.5rem;
+            position: relative;
+            text-transform: uppercase;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 25px 40px rgba(0,0,0,0.6);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+        
+        .verse {
+            font-style: italic;
+            padding: 15px;
+            border-left: 3px solid;
+            border-image: var(--accent);
+            border-image-slice: 1;
+            margin: 20px 0;
+            background: rgba(255,255,255,0.05);
+            border-radius: 0 5px 5px 0;
+        }
+        
+        /* Promises Section */
+        .promises-container {
+            background-color: var(--secondary);
+            padding: 60px;
+            border-radius: 10px;
+            margin: 50px 0;
+        }
+        
+        .promise-item {
+            margin-bottom: 30px;
+        }
+        
+        .promise-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            background: var(--accent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .promise-item p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        /* Coming Soon Section */
+        .coming-soon {
+            text-align: center;
+            padding: 80px 10%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        
+        .coming-soon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            opacity: 0.08;
+            z-index: -1;
+        }
+        
+        .coming-soon i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: var(--accent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .coming-soon h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        .coming-soon p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            height: 250px;
+            overflow: hidden;
+            border-radius: 10px;
+            position: relative;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-form {
+            flex: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--secondary);
+            border: none;
+            border-radius: 5px;
+            color: var(--text);
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .info-icon {
+            font-size: 1.5rem;
+            background: var(--accent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-right: 15px;
+            width: 40px;
+        }
+        
+        .email-link {
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .email-link:hover {
+            background: var(--accent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            padding: 50px 10%;
+            text-align: center;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-links a {
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        
+        .footer-links a:hover {
+            background: var(--accent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .social-icons a {
+            color: var(--text);
+            font-size: 1.3rem;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px);
+            background: var(--accent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .copyright {
+            color: var(--text-secondary);
+            margin-top: 30px;
+            font-size: 0.8rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                gap: 15px;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .connect-button {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+            
+            .hero {
+                padding: 0 5%;
+                text-align: center;
+                align-items: center;
+            }
+            
+            .hero-text {
+                text-align: center;
+            }
+            
+            .hero-name {
+                position: relative;
+                right: auto;
+                bottom: auto;
+                margin-top: 40px;
+                font-size: 2.8rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .section-title {
+                text-align: center;
+            }
+            
+            .section-title::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .promises-container {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#promises">Promises</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact" class="connect-button">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <h2>A DIVINE ENCOUNTER IN WORSHIP</h2>
+            <p>Where broken hearts find healing and weary souls discover rest. Every note I sing carries the oil of gladness to replace mourning with praise.</p>
+            
+            <p>This is sacred space—where God's presence meets human longing. When worship flows from an altar of surrender, it becomes a weapon that shatters darkness.</p>
+            
+            <div class="scripture">
+                "The Lord your God is in your midst, a mighty one who will save; he will rejoice over you with gladness; he will quiet you by his love; he will exult over you with loud singing." <br>
+                - Zephaniah 3:17
+            </div>
+            
+            <p>Come, let us ascend the hill of the Lord together. Where chains break, vision clears, and lives are forever changed by encounters with the Living God.</p>
+        </div>
+        <div class="hero-name">PROMISE DAN</div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">My Ministry</h2>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-4.0.3" alt="Worship Moment">
+            </div>
+            <div class="about-text">
+                <p>This ministry was birthed from the furnace of affliction—tempered in trials and anointed through obedience. What you hear is not mere melody, but the sound of a life laid down at the altar.</p>
+                
+                <p>God is raising voices in this hour that carry both the fire of holiness and the balm of mercy. My calling is to sound the trumpet that calls God's people back to authentic worship—raw, unfiltered, and saturated with power.</p>
+                
+                <div class="verse">
+                    "But you are a chosen race, a royal priesthood, a holy nation, a people for his own possession, that you may proclaim the excellencies of him who called you out of darkness into his marvelous light."<br>
+                    - 1 Peter 2:9
+                </div>
+                
+                <p>When I minister, I come not as performer but as priest—offering sacrifices of praise that rise as sweet incense before the throne. The anointing you feel is the residue of nights spent weeping before the Lord.</p>
+                
+                <p>This is worship that dismantles strongholds, opens prison doors, and ushers in revival fire. Will you join me in this holy pursuit?</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- God's Promises Section -->
+    <section id="promises">
+        <h2 class="section-title">God's Promises</h2>
+        <div class="promises-container">
+            <div class="promise-item">
+                <h3>ACCEPTANCE</h3>
+                <p>"To all who did receive him, who believed in his name, he gave the right to become children of God" (John 1:12). You are fully known and completely loved by your Heavenly Father. No performance needed—just open arms awaiting your return.</p>
+            </div>
+            <div class="promise-item">
+                <h3>RESTORATION</h3>
+                <p>"I will restore to you the years that the swarming locust has eaten" (Joel 2:25). What was stolen, God will redeem. What was broken, He will make new. Your latter days will be greater than your former.</p>
+            </div>
+            <div class="promise-item">
+                <h3>PURPOSE</h3>
+                <p>"For I know the plans I have for you, declares the Lord, plans for welfare and not for evil, to give you a future and a hope" (Jeremiah 29:11). Every tear, every trial is being woven into a masterpiece of grace.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section class="coming-soon">
+        <i class="fas fa-dove"></i>
+        <h2>New Worship Coming</h2>
+        <p>The Spirit is breathing fresh melodies—songs forged in the secret place, tested by fire, and released in perfect timing. What God is preparing will shake nations and heal wounded hearts.</p>
+        <p>Stay tuned for when these living waters begin to flow. Until then, pray with me for the perfect timing of the Lord.</p>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <h2 class="section-title">Sacred Moments</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1501612780327-45045538702b?ixlib=rb-4.0.3" alt="Worship Moment">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1549213783-8284d0336c4f?ixlib=rb-4.0.3" alt="Ministry">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3" alt="Bible Study">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3" alt="Worship Team">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1496293455970-f8581aae0e3b?ixlib=rb-4.0.3" alt="Church Service">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3" alt="Concert">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Divine Connection</h2>
+        <div class="contact-container">
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="connect-button">Send Message</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <h3>Email</h3>
+                        <p><a href="mailto:iampromisedan@gmail.com" class="email-link">iampromisedan@gmail.com</a></p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-phone"></i></div>
+                    <div>
+                        <h3>Phone</h3>
+                        <p>+(234) 701-690-5148</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <h3>Location</h3>
+                        <p>Nigeria</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#promises">Promises</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+        <p class="copyright">© 2023 Sacred Worship Ministry. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
