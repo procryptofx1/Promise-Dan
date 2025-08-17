@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gospel Worship Ministry</title>
+    <title>Promise Dan | Gospel Artist</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #0A0A0A;
-            --secondary: #121212;
-            --accent: linear-gradient(90deg, #FF00E6 0%, #FFFFFF 50%, #0066FF 100%);
+            --primary: #000000;
+            --secondary: #0A0A0A; 
+            --accent: #1A3F9E;
+            --glow: 0 0 15px rgba(26, 63, 158, 0.7);
             --text: #FFFFFF;
             --text-secondary: #CCCCCC;
-            --contact-gray: #888888;
-            --text-shadow: 0 0 15px rgba(255,255,255,0.4);
         }
         
         * {
@@ -24,9 +23,10 @@
         }
         
         body {
-            background-color: var(--primary);
+            background: var(--primary);
             color: var(--text);
             overflow-x: hidden;
+            line-height: 1.6;
         }
         
         /* Navigation */
@@ -38,70 +38,91 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 5%;
-            background-color: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(15px);
+            background-color: transparent;
             z-index: 1000;
+            transition: background-color 0.3s;
+        }
+        
+        nav.scrolled {
+            background-color: rgba(0,0,0,0.9);
+            backdrop-filter: blur(15px);
+            box-shadow: var(--glow);
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--text);
+            text-transform: uppercase;
+            text-shadow: var(--glow);
         }
         
         .hamburger {
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
+            color: var(--text);
+            z-index: 1001;
+            transition: transform 0.3s;
+        }
+        
+        .hamburger.active {
+            transform: rotate(90deg);
         }
         
         .nav-links {
             display: flex;
             gap: 30px;
-            align-items: center;
         }
         
         .nav-links a {
             color: var(--text);
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s;
-            text-transform: uppercase;
             font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            text-shadow: var(--glow);
         }
         
         .nav-links a:hover {
-            background: var(--accent);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: var(--accent);
         }
         
         .connect-button {
-            padding: 8px 25px;
+            padding: 8px 20px;
             background: var(--accent);
-            color: var(--primary);
+            color: var(--text);
             border: none;
             border-radius: 30px;
             font-weight: 700;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
             text-decoration: none;
             text-transform: uppercase;
             font-size: 0.8rem;
-            margin-left: 20px;
+            transition: all 0.3s;
+            box-shadow: var(--glow);
+            margin: 5px 0;
+            width: 180px;
+            text-align: center;
         }
         
         .connect-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(0, 102, 255, 0.5);
+            box-shadow: 0 5px 20px var(--accent);
         }
         
-        /* Hero Section */
+        /* Hero Section - Modified with overlay */
         .hero {
             height: 100vh;
+            min-height: 600px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: flex-start;
-            text-align: left;
-            padding: 0 10%;
+            padding: 80px 10% 0 10%;
             position: relative;
             overflow: hidden;
+            text-align: left;
         }
         
         .hero::before {
@@ -111,78 +132,122 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.7)), url('https://i.ibb.co/84z7kvrq/promise-dan.jpg') no-repeat center center/cover;
+            background: url('https://i.ibb.co/84z7kvrq/promise-dan.jpg') no-repeat center center/cover;
             z-index: -1;
         }
         
-        .hero-text {
-            max-width: 650px;
-            margin-bottom: 30px;
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3); /* Black overlay with 30% opacity */
+            z-index: -1;
         }
         
-        .hero h2 {
-            font-size: 1.1rem;
+        .hero-content {
+            max-width: 700px;
+        }
+        
+        .hero h1 {
+            font-size: 1rem;
             margin-bottom: 15px;
             color: var(--text-secondary);
             font-weight: 400;
-            line-height: 1.5;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
         
         .hero p {
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             margin-bottom: 12px;
             color: var(--text);
-            line-height: 1.6;
-            font-weight: 300;
         }
         
-        .hero .scripture {
+        .scripture {
             font-style: italic;
             margin: 20px 0;
-            padding-left: 20px;
-            border-left: 2px solid;
-            border-image: var(--accent);
-            border-image-slice: 1;
+            padding-left: 15px;
+            border-left: 2px solid var(--accent);
+            font-size: 0.9rem;
         }
         
-        .hero-name {
-            position: absolute;
-            right: 10%;
-            bottom: 15%;
-            font-size: 4rem;
-            font-weight: 800;
+        .hero-tagline {
+            font-size: 1.5rem;
+            margin: 15px 0;
+            color: var(--text);
             text-transform: uppercase;
-            color: transparent;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .follow-cta {
+            display: inline-block;
+            padding: 8px 20px;
+            color: var(--text);
+            text-decoration: none;
+            border: 1px solid var(--accent);
+            border-radius: 30px;
+            transition: all 0.3s;
+            margin: 5px 0;
+            width: 180px;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+        
+        .follow-cta:hover {
             background: var(--accent);
-            -webkit-background-clip: text;
-            background-clip: text;
-            text-shadow: var(--text-shadow);
-            letter-spacing: 4px;
+            transform: translateY(-3px);
         }
         
         /* Sections */
         section {
-            padding: 100px 10%;
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
         .section-title {
-            text-align: left;
-            margin-bottom: 60px;
-            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2rem;
             position: relative;
             text-transform: uppercase;
+            text-shadow: var(--glow);
         }
         
         .section-title::after {
             content: '';
             position: absolute;
             bottom: -15px;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 80px;
             height: 3px;
             background: var(--accent);
+            box-shadow: var(--glow);
+        }
+        
+        /* Cards */
+        .card {
+            background: var(--secondary);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: var(--glow);
+            border: 1px solid rgba(26, 63, 158, 0.3);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
         }
         
         /* About Section */
@@ -196,7 +261,7 @@
             flex: 1;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 25px 40px rgba(0,0,0,0.6);
+            box-shadow: var(--glow);
         }
         
         .about-image img {
@@ -211,129 +276,92 @@
         
         .about-text p {
             margin-bottom: 20px;
-            line-height: 1.7;
             color: var(--text-secondary);
-            font-weight: 300;
         }
         
         .verse {
             font-style: italic;
             padding: 15px;
-            border-left: 3px solid;
-            border-image: var(--accent);
-            border-image-slice: 1;
+            border-left: 3px solid var(--accent);
             margin: 20px 0;
-            background: rgba(255,255,255,0.05);
-            border-radius: 0 5px 5px 0;
+            background: rgba(26, 63, 158, 0.05);
+            text-shadow: var(--glow);
         }
         
-        /* Promises Section */
-        .promises-container {
-            background-color: var(--secondary);
-            padding: 60px;
-            border-radius: 10px;
-            margin: 50px 0;
-        }
-        
-        .promise-item {
-            margin-bottom: 30px;
-        }
-        
-        .promise-item h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            background: var(--accent);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .promise-item p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-        
-        /* Coming Soon Section */
-        .coming-soon {
+        /* Music Previews */
+        .music-previews {
             text-align: center;
-            padding: 80px 10%;
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
         }
         
-        .coming-soon::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        .preview-player {
             width: 100%;
-            height: 100%;
-            background: var(--accent);
-            opacity: 0.08;
-            z-index: -1;
-        }
-        
-        .coming-soon i {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            background: var(--accent);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .coming-soon h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-        
-        .coming-soon p {
-            color: var(--text-secondary);
             max-width: 600px;
             margin: 0 auto;
-            line-height: 1.7;
-        }
-        
-        /* Gallery Section */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        
-        .gallery-item {
-            height: 250px;
-            overflow: hidden;
+            background: var(--secondary);
+            padding: 30px;
             border-radius: 10px;
-            position: relative;
-            transition: transform 0.5s;
+            box-shadow: var(--glow);
         }
         
-        .gallery-item img {
+        .preview-player audio {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
+            margin-top: 15px;
         }
         
-        .gallery-item:hover {
-            transform: translateY(-10px);
+        /* Testimonies Gallery - Improved Swipeable */
+        .testimony-gallery-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
         }
         
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-        
-        /* Contact Section */
-        .contact-container {
+        .testimony-gallery {
             display: flex;
-            gap: 50px;
+            gap: 20px;
+            padding: 20px 0;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            overflow-x: auto;
+            width: max-content;
         }
         
-        .contact-form {
-            flex: 1;
+        .testimony-gallery::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .testimony-gallery::-webkit-scrollbar-track {
+            background: var(--primary);
+        }
+        
+        .testimony-gallery::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+        
+        .testimony-gallery img {
+            height: 300px;
+            width: 300px;
+            min-width: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            scroll-snap-align: start;
+            box-shadow: var(--glow);
+            transition: transform 0.3s;
+        }
+        
+        .testimony-gallery img:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Booking Section - Enhanced */
+        .booking-form {
+            background: var(--secondary);
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: var(--glow);
         }
         
         .form-group {
@@ -345,89 +373,76 @@
             margin-bottom: 8px;
             text-transform: uppercase;
             font-size: 0.9rem;
+            color: var(--text-secondary);
         }
         
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 12px;
-            background-color: var(--secondary);
-            border: none;
+            background-color: rgba(255,255,255,0.1);
+            border: 1px solid var(--accent);
             border-radius: 5px;
             color: var(--text);
         }
         
-        .contact-info {
-            flex: 1;
+        .venue-details {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(26, 63, 158, 0.1);
+            border-radius: 5px;
+            border-left: 3px solid var(--accent);
         }
         
-        .info-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-        
-        .info-icon {
-            font-size: 1.5rem;
-            background: var(--accent);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-right: 15px;
-            width: 40px;
-        }
-        
-        .email-link {
-            color: var(--text);
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .email-link:hover {
-            background: var(--accent);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--secondary);
-            padding: 50px 10%;
+        /* Mission Section */
+        .mission-section {
             text-align: center;
-            position: relative;
+            padding: 60px 5%;
+            background: var(--secondary);
+            border-radius: 10px;
+            margin: 60px auto;
+            max-width: 1200px;
+            box-shadow: var(--glow);
         }
         
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--accent);
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
+        .mission-section h3 {
+            font-size: 1.5rem;
             margin-bottom: 30px;
-        }
-        
-        .footer-links a {
-            color: var(--text);
-            text-decoration: none;
-            transition: all 0.3s;
+            color: var(--accent);
             text-transform: uppercase;
-            font-size: 0.9rem;
         }
         
-        .footer-links a:hover {
-            background: var(--accent);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        .ways-to-help {
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .ways-to-help li {
+            margin-bottom: 15px;
+            list-style-type: none;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .ways-to-help li:before {
+            content: "•";
+            color: var(--accent);
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+        
+        /* Social/Contact Bar */
+        .social-contact-bar {
+            background: var(--secondary);
+            padding: 50px 5%;
+            text-align: center;
+            margin-top: 60px;
+            box-shadow: var(--glow);
         }
         
         .social-icons {
@@ -439,22 +454,141 @@
         
         .social-icons a {
             color: var(--text);
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             transition: all 0.3s;
+            text-shadow: var(--glow);
         }
         
         .social-icons a:hover {
+            color: var(--accent);
             transform: translateY(-5px);
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Payment Modal - Enhanced */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+        }
+        
+        .modal-content {
+            background: var(--secondary);
+            margin: 10% auto;
+            padding: 30px;
+            border: 1px solid var(--accent);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: var(--glow);
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+        }
+        
+        .payment-form {
+            margin-top: 20px;
+        }
+        
+        .payment-form input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+            color: var(--text);
+        }
+        
+        .payment-options {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            flex-direction: column;
+        }
+        
+        .payment-option {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid var(--accent);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .payment-option.selected {
             background: var(--accent);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        }
+        
+        .payment-option:hover {
+            background: rgba(26, 63, 158, 0.2);
+        }
+        
+        .card-details {
+            display: none;
+            margin-top: 20px;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            padding: 30px 5%;
+            text-align: center;
+            border-top: 1px solid var(--accent);
         }
         
         .copyright {
             color: var(--text-secondary);
-            margin-top: 30px;
             font-size: 0.8rem;
+            margin-top: 20px;
+        }
+        
+        .donation-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--text);
+            text-decoration: none;
+            border: 1px solid var(--accent);
+            padding: 8px 20px;
+            border-radius: 30px;
+            transition: all 0.3s;
+            text-shadow: var(--glow);
+            cursor: pointer;
+        }
+        
+        .donation-link:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
         }
         
         /* Responsive Design */
@@ -464,243 +598,325 @@
             }
             
             .nav-links {
-                display: none;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
                 background-color: var(--primary);
                 flex-direction: column;
+                justify-content: center;
                 align-items: center;
-                padding: 20px 0;
-                gap: 15px;
+                gap: 30px;
+                transition: right 0.3s;
+                z-index: 1000;
+                box-shadow: var(--glow);
             }
             
             .nav-links.active {
-                display: flex;
-            }
-            
-            .connect-button {
-                margin-left: 0;
-                margin-top: 10px;
+                right: 0;
             }
             
             .hero {
-                padding: 0 5%;
-                text-align: center;
-                align-items: center;
+                padding: 80px 5% 0 5%;
+                min-height: 500px;
             }
             
-            .hero-text {
-                text-align: center;
-            }
-            
-            .hero-name {
-                position: relative;
-                right: auto;
-                bottom: auto;
-                margin-top: 40px;
-                font-size: 2.8rem;
+            .hero-content {
+                max-width: 100%;
             }
             
             .about-content {
                 flex-direction: column;
             }
             
-            .section-title {
-                text-align: center;
+            .testimony-gallery img {
+                height: 250px;
+                width: 250px;
+                min-width: 250px;
             }
             
-            .section-title::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            
-            .contact-container {
+            .contact-info {
                 flex-direction: column;
+                gap: 15px;
             }
             
-            .promises-container {
-                padding: 40px 20px;
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .mission-section {
+                padding: 40px 5%;
+                margin: 40px 5%;
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
-    <nav>
+    <nav id="navbar">
+        <div class="logo">PROMISE DAN</div>
         <div class="hamburger" id="hamburger">
             <i class="fas fa-bars"></i>
         </div>
         <div class="nav-links" id="navLinks">
             <a href="#home">Home</a>
             <a href="#about">About</a>
-            <a href="#promises">Promises</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#contact" class="connect-button">Contact</a>
+            <a href="#music">Music</a>
+            <a href="#book">Book</a>
+            <a href="#testimonies">Testimonies</a>
+            <a href="#contact">Contact</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section - Modified with overlay -->
     <section class="hero" id="home">
-        <div class="hero-text">
-            <h2>A DIVINE ENCOUNTER IN WORSHIP</h2>
-            <p>Where broken hearts find healing and weary souls discover rest. Every note I sing carries the oil of gladness to replace mourning with praise.</p>
-            
-            <p>This is sacred space—where God's presence meets human longing. When worship flows from an altar of surrender, it becomes a weapon that shatters darkness.</p>
+        <div class="hero-content">
+            <h1>PROMISE DAN MINISTRY</h1>
+            <p class="hero-tagline">Worship Deep. Praise Wild.</p>
+            <p>Through worship that ushers hearts into divine encounter. Every melody is a gateway to healing, restoration, and transformation.</p>
             
             <div class="scripture">
-                "The Lord your God is in your midst, a mighty one who will save; he will rejoice over you with gladness; he will quiet you by his love; he will exult over you with loud singing." <br>
-                - Zephaniah 3:17
+                "But the hour is coming, and is now here, when the true worshipers will worship the Father in spirit and truth..." <br>
+                - John 4:23
             </div>
             
-            <p>Come, let us ascend the hill of the Lord together. Where chains break, vision clears, and lives are forever changed by encounters with the Living God.</p>
+            <div class="button-group">
+                <a href="#music" class="connect-button">Hear My Sound</a>
+                <a href="#book" class="connect-button">Book for Event</a>
+                <a href="#contact" class="follow-cta">Follow My Journey</a>
+            </div>
         </div>
-        <div class="hero-name">PROMISE DAN</div>
     </section>
 
     <!-- About Section -->
     <section id="about">
-        <h2 class="section-title">My Ministry</h2>
+        <h2 class="section-title">The Heart Behind The Music</h2>
         <div class="about-content">
             <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-4.0.3" alt="Worship Moment">
+                <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-4.0.3" alt="Promise Dan Ministry">
             </div>
             <div class="about-text">
-                <p>This ministry was birthed from the furnace of affliction—tempered in trials and anointed through obedience. What you hear is not mere melody, but the sound of a life laid down at the altar.</p>
-                
-                <p>God is raising voices in this hour that carry both the fire of holiness and the balm of mercy. My calling is to sound the trumpet that calls God's people back to authentic worship—raw, unfiltered, and saturated with power.</p>
+                <p>I'm Promise Dan, an upcoming gospel artist called to bridge heaven and earth through AfroGospel sounds. My music isn't just songs—it's warfare, healing, and revival. Though I'm early in this journey, I've seen God turn my 'little' into 'much' (John 6:9). Every lyric I write is a seed of faith, and I'm trusting Him to water it.</p>
                 
                 <div class="verse">
-                    "But you are a chosen race, a royal priesthood, a holy nation, a people for his own possession, that you may proclaim the excellencies of him who called you out of darkness into his marvelous light."<br>
-                    - 1 Peter 2:9
+                    "He must increase, I must decrease."<br>
+                    - John 3:30
                 </div>
                 
-                <p>When I minister, I come not as performer but as priest—offering sacrifices of praise that rise as sweet incense before the throne. The anointing you feel is the residue of nights spent weeping before the Lord.</p>
+                <p>My purpose is to create worship that shakes chains and draws people into God's presence. When you listen, I pray you don't just hear me—you hear Him.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Section -->
+    <section id="music">
+        <h2 class="section-title">My Music</h2>
+        <div class="music-previews">
+            <div class="preview-player card">
+                <h3>Sample Song Title</h3>
+                <audio controls ontimeupdate="checkTime(this)">
+                    <source src="sample.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <p class="preview-notice">(30-second preview only - continue on streaming platforms)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section - Enhanced with venue details -->
+    <section id="book">
+        <h2 class="section-title">Book for Events</h2>
+        <div class="booking-form card">
+            <form id="bookingForm" action="https://formsubmit.co/iampromisedan@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="New Booking Request">
+                <input type="hidden" name="_template" value="box">
                 
-                <p>This is worship that dismantles strongholds, opens prison doors, and ushers in revival fire. Will you join me in this holy pursuit?</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- God's Promises Section -->
-    <section id="promises">
-        <h2 class="section-title">God's Promises</h2>
-        <div class="promises-container">
-            <div class="promise-item">
-                <h3>ACCEPTANCE</h3>
-                <p>"To all who did receive him, who believed in his name, he gave the right to become children of God" (John 1:12). You are fully known and completely loved by your Heavenly Father. No performance needed—just open arms awaiting your return.</p>
-            </div>
-            <div class="promise-item">
-                <h3>RESTORATION</h3>
-                <p>"I will restore to you the years that the swarming locust has eaten" (Joel 2:25). What was stolen, God will redeem. What was broken, He will make new. Your latter days will be greater than your former.</p>
-            </div>
-            <div class="promise-item">
-                <h3>PURPOSE</h3>
-                <p>"For I know the plans I have for you, declares the Lord, plans for welfare and not for evil, to give you a future and a hope" (Jeremiah 29:11). Every tear, every trial is being woven into a masterpiece of grace.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Coming Soon Section -->
-    <section class="coming-soon">
-        <i class="fas fa-dove"></i>
-        <h2>New Worship Coming</h2>
-        <p>The Spirit is breathing fresh melodies—songs forged in the secret place, tested by fire, and released in perfect timing. What God is preparing will shake nations and heal wounded hearts.</p>
-        <p>Stay tuned for when these living waters begin to flow. Until then, pray with me for the perfect timing of the Lord.</p>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery">
-        <h2 class="section-title">Sacred Moments</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1501612780327-45045538702b?ixlib=rb-4.0.3" alt="Worship Moment">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1549213783-8284d0336c4f?ixlib=rb-4.0.3" alt="Ministry">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3" alt="Bible Study">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3" alt="Worship Team">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1496293455970-f8581aae0e3b?ixlib=rb-4.0.3" alt="Church Service">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3" alt="Concert">
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2 class="section-title">Divine Connection</h2>
-        <div class="contact-container">
-            <div class="contact-form">
-                <form>
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="event-type">Event Type</label>
+                    <select id="event-type" name="event-type" required onchange="showVenueDetails(this.value)">
+                        <option value="">Select...</option>
+                        <option value="church">Church Service</option>
+                        <option value="concert">Concert</option>
+                        <option value="revival">Revival Meeting</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div id="churchDetails" class="venue-details">
                     <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" required>
+                        <label for="church-name">Church Name</label>
+                        <input type="text" id="church-name" name="church-name">
                     </div>
                     <div class="form-group">
-                        <label for="email">Your Email</label>
-                        <input type="email" id="email" required>
+                        <label for="church-location">Church Location</label>
+                        <input type="text" id="church-location" name="church-location">
                     </div>
                     <div class="form-group">
-                        <label for="message">Your Message</label>
-                        <textarea id="message" rows="5" required></textarea>
+                        <label for="pastor-name">Pastor's Name</label>
+                        <input type="text" id="pastor-name" name="pastor-name">
                     </div>
-                    <button type="submit" class="connect-button">Send Message</button>
-                </form>
+                </div>
+                
+                <div id="concertDetails" class="venue-details">
+                    <div class="form-group">
+                        <label for="venue-name">Venue Name</label>
+                        <input type="text" id="venue-name" name="venue-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="venue-address">Full Address</label>
+                        <input type="text" id="venue-address" name="venue-address">
+                    </div>
+                    <div class="form-group">
+                        <label for="organizer">Organizer Name</label>
+                        <input type="text" id="organizer" name="organizer">
+                    </div>
+                </div>
+                
+                <div id="otherDetails" class="venue-details">
+                    <div class="form-group">
+                        <label for="event-name">Event Name</label>
+                        <input type="text" id="event-name" name="event-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="event-location">Event Location</label>
+                        <input type="text" id="event-location" name="event-location">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-person">Contact Person</label>
+                        <input type="text" id="contact-person" name="contact-person">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">Preferred Date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Additional Details</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="connect-button">Send Booking Request</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Testimonies Section - Improved Swipeable Gallery -->
+    <section id="testimonies">
+        <h2 class="section-title">Testimonies</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <div class="verse">
+                    "They triumphed over him by the blood of the Lamb and by the word of their testimony..."<br>
+                    - Revelation 12:11
+                </div>
+                <p>What God is doing through this ministry is just beginning. As He opens doors, I'll share testimonies of changed lives here.</p>
             </div>
-            <div class="contact-info">
-                <div class="info-item">
-                    <div class="info-icon"><i class="fas fa-envelope"></i></div>
-                    <div>
-                        <h3>Email</h3>
-                        <p><a href="mailto:iampromisedan@gmail.com" class="email-link">iampromisedan@gmail.com</a></p>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <div class="info-icon"><i class="fas fa-phone"></i></div>
-                    <div>
-                        <h3>Phone</h3>
-                        <p>+(234) 701-690-5148</p>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <div>
-                        <h3>Location</h3>
-                        <p>Nigeria</p>
-                    </div>
+            <div class="testimony-gallery-container">
+                <div class="testimony-gallery" id="gallery">
+                    <img src="https://images.unsplash.com/photo-1501612780327-45045538702b?ixlib=rb-4.0.3" alt="Worship Moment">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3" alt="Bible Study">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3" alt="Worship Team">
+                    <img src="https://images.unsplash.com/photo-1496293455970-f8581aae0e3b?ixlib=rb-4.0.3" alt="Church Service">
+                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3" alt="Concert">
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section card">
+        <h3>Join Me in This Mission</h3>
+        <p>This ministry is just beginning, and I need you. Not just as a listener, but as a <em>co-laborer</em>. When my first single drops, it'll be our victory, not just mine.</p>
+        
+        <div class="ways-to-help">
+            <p><strong>Three Ways You Can Help:</strong></p>
+            <ul>
+                <li><strong>Pray</strong> - Cover this ministry in prayer</li>
+                <li><strong>Share</strong> - Follow me on all social media and tag someone who needs worship</li>
+                <li><strong>Give</strong> - If God leads you, support the work</li>
+            </ul>
+        </div>
+        
+        <p style="margin-top: 30px;"><em>Stay ready - what's coming will glorify Him!</em></p>
+    </section>
+
+    <!-- Social/Contact Bar -->
+    <div class="social-contact-bar" id="contact">
+        <div class="social-icons">
+            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span><a href="mailto:iampromisedan@gmail.com" style="color: var(--text); text-decoration: none;">iampromisedan@gmail.com</a></span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>+(234) 701-690-5148</span>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#promises">Promises</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#contact">Contact</a>
-        </div>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fab fa-tiktok"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
-        </div>
-        <p class="copyright">© 2023 Sacred Worship Ministry. All Rights Reserved.</p>
+        <a id="donationBtn" class="donation-link">Support This Ministry</a>
+        <p class="copyright">© 2023 Promise Dan Ministry. All Rights Reserved.</p>
     </footer>
+
+    <!-- Payment Modal - Enhanced with card validation -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Support Promise Dan Ministry</h2>
+            <p>Enter donation amount and payment method</p>
+            
+            <form id="paymentForm" class="payment-form">
+                <input type="number" id="donationAmount" placeholder="Amount in USD ($)" min="1" step="1" required>
+                
+                <div class="payment-options">
+                    <div class="payment-option" onclick="selectPayment('card')">
+                        <i class="fab fa-cc-visa"></i> Credit/Debit Card
+                    </div>
+                    
+                    <div id="cardDetails" class="card-details">
+                        <input type="text" id="cardNumber" placeholder="Card Number" pattern="[0-9]{16}" title="16-digit card number" required>
+                        <input type="text" id="cardName" placeholder="Name on Card" required>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="text" id="cardExpiry" placeholder="MM/YY" pattern="(0[1-9]|1[0-2])\/[0-9]{2}" title="MM/YY format" required>
+                            <input type="text" id="cardCvv" placeholder="CVV" pattern="[0-9]{3,4}" title="3 or 4-digit CVV" required>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-option" onclick="selectPayment('transfer')">
+                        <i class="fas fa-university"></i> Bank Transfer
+                    </div>
+                    
+                    <div class="payment-option" onclick="selectPayment('paypal')">
+                        <i class="fab fa-cc-paypal"></i> PayPal
+                    </div>
+                </div>
+                
+                <button type="submit" class="connect-button">Proceed to Payment</button>
+            </form>
+        </div>
+    </div>
 
     <script>
         // Mobile menu toggle
@@ -709,23 +925,283 @@
         
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+            hamburger.classList.toggle('fa-times');
+            hamburger.classList.toggle('active');
+        });
+        
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // 30-second audio preview
+        function checkTime(audio) {
+            if (audio.currentTime > 30) {
+                audio.pause();
+                alert('Continue listening on streaming platforms!');
+                audio.currentTime = 0;
+            }
+        }
+        
+        // Show venue details based on event type
+        function showVenueDetails(eventType) {
+            document.querySelectorAll('.venue-details').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            if (eventType === 'church') {
+                document.getElementById('churchDetails').style.display = 'block';
+            } else if (eventType === 'concert') {
+                document.getElementById('concertDetails').style.display = 'block';
+            } else if (eventType === 'other') {
+                document.getElementById('otherDetails').style.display = 'block';
+            }
+        }
+        
+        // Improved Gallery swipe functionality
+        const gallery = document.getElementById('gallery');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        let velocity = 0;
+        let animationFrame;
+        let rafId;
+
+        // Mouse events
+        gallery.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - gallery.offsetLeft;
+            scrollLeft = gallery.scrollLeft;
+            cancelAnimationFrame(rafId);
+            velocity = 0;
+        });
+
+        gallery.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
+
+        gallery.addEventListener('mouseup', () => {
+            isDown = false;
+            applyMomentum();
+        });
+
+        gallery.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - gallery.offsetLeft;
+            const walk = (x - startX) * 2;
+            const prevScrollLeft = gallery.scrollLeft;
+            gallery.scrollLeft = scrollLeft - walk;
+            velocity = gallery.scrollLeft - prevScrollLeft;
+        });
+
+        // Touch events
+        gallery.addEventListener('touchstart', (e) => {
+            isDown = true;
+            startX = e.touches[0].pageX - gallery.offsetLeft;
+            scrollLeft = gallery.scrollLeft;
+            cancelAnimationFrame(rafId);
+            velocity = 0;
+        });
+
+        gallery.addEventListener('touchend', () => {
+            isDown = false;
+            applyMomentum();
+        });
+
+        gallery.addEventListener('touchmove', (e) => {
+            if(!isDown) return;
+            const x = e.touches[0].pageX - gallery.offsetLeft;
+            const walk = (x - startX) * 2;
+            const prevScrollLeft = gallery.scrollLeft;
+            gallery.scrollLeft = scrollLeft - walk;
+            velocity = gallery.scrollLeft - prevScrollLeft;
+        });
+
+        // Momentum scrolling
+        function applyMomentum() {
+            const startTime = Date.now();
+            const startScroll = gallery.scrollLeft;
+            const duration = 300;
+            
+            function animate() {
+                const now = Date.now();
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const ease = 1 - Math.pow(1 - progress, 3); // Ease out cubic
+                
+                gallery.scrollLeft = startScroll + (velocity * ease * 10);
+                
+                if (progress < 1) {
+                    rafId = requestAnimationFrame(animate);
+                }
+            }
+            
+            if (Math.abs(velocity) > 1) {
+                rafId = requestAnimationFrame(animate);
+            }
+        }
+
+        // Auto-scroll for demonstration (optional)
+        let autoScrollDirection = 1;
+        let autoScrollInterval = setInterval(() => {
+            if (!isDown) {
+                gallery.scrollLeft += autoScrollDirection * 2;
+                if (gallery.scrollLeft >= gallery.scrollWidth - gallery.clientWidth) {
+                    autoScrollDirection = -1;
+                } else if (gallery.scrollLeft <= 0) {
+                    autoScrollDirection = 1;
+                }
+            }
+        }, 30);
+        
+        // Pause auto-scroll on interaction
+        gallery.addEventListener('mousedown', () => clearInterval(autoScrollInterval));
+        gallery.addEventListener('touchstart', () => clearInterval(autoScrollInterval));
+        
+        // Payment Modal
+        const modal = document.getElementById('paymentModal');
+        const btn = document.getElementById('donationBtn');
+        const span = document.getElementsByClassName('close-modal')[0];
+        let selectedPayment = '';
+        
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+        
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        
+        // Select payment method
+        function selectPayment(method) {
+            selectedPayment = method;
+            document.querySelectorAll('.payment-option').forEach(el => {
+                el.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+            
+            // Show card details only if card is selected
+            if (method === 'card') {
+                document.getElementById('cardDetails').style.display = 'block';
+            } else {
+                document.getElementById('cardDetails').style.display = 'none';
+            }
+        }
+        
+        // Card validation
+        document.getElementById('cardNumber').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^\d]/g, '').substring(0,16);
+        });
+        
+        document.getElementById('cardExpiry').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^\d/]/g, '').substring(0,5);
+        });
+        
+        document.getElementById('cardCvv').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^\d]/g, '').substring(0,4);
+        });
+        
+        // Flutterwave Payment Integration
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const amount = document.getElementById('donationAmount').value;
+            
+            if (!selectedPayment) {
+                alert('Please select a payment method');
+                return;
+            }
+            
+            if (selectedPayment === 'card') {
+                // Validate card details
+                const cardNumber = document.getElementById('cardNumber').value;
+                const cardName = document.getElementById('cardName').value;
+                const cardExpiry = document.getElementById('cardExpiry').value;
+                const cardCvv = document.getElementById('cardCvv').value;
+                
+                if (!cardNumber || !cardName || !cardExpiry || !cardCvv) {
+                    alert('Please fill all card details');
+                    return;
+                }
+                
+                if (cardNumber.length !== 16) {
+                    alert('Please enter a valid 16-digit card number');
+                    return;
+                }
+                
+                if (!cardExpiry.match(/(0[1-9]|1[0-2])\/[0-9]{2}/)) {
+                    alert('Please enter expiry date in MM/YY format');
+                    return;
+                }
+                
+                if (cardCvv.length < 3 || cardCvv.length > 4) {
+                    alert('Please enter a valid CVV (3 or 4 digits)');
+                    return;
+                }
+            }
+            
+            // Replace with your Flutterwave public key
+            const flutterwavePublicKey = 'FLWPUBK-24a830b6d427f41bb251292499a63f5e-X';
+            
+            FlutterwaveCheckout({
+                public_key: flutterwavePublicKey,
+                tx_ref: "PDM_" + Math.floor(Math.random() * 1000000000 + 1),
+                amount: amount,
+                currency: "USD",
+                payment_options: selectedPayment === 'card' ? 'card' : 
+                                 selectedPayment === 'transfer' ? 'banktransfer' : 'paypal',
+                customer: {
+                    email: "iampromisedan@gmail.com",
+                    phone_number: "+2347016905148",
+                    name: "Promise Dan Supporter",
+                },
+                customizations: {
+                    title: "Promise Dan Ministry",
+                    description: "Donation to support gospel music ministry",
+                    logo: "https://i.ibb.co/84z7kvrq/promise-dan.jpg",
+                },
+                callback: function(response) {
+                    alert("Thank you for your donation!");
+                    modal.style.display = "none";
+                },
+                onclose: function() {
+                    console.log("Payment window closed");
+                }
+            });
         });
         
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-                
-                // Close mobile menu if open
-                if (navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        hamburger.classList.remove('fa-times');
+                        hamburger.classList.remove('active');
+                    }
                 }
             });
         });
     </script>
+    <!-- Flutterwave Payment Script -->
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
 </body>
 </html>
