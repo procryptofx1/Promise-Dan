@@ -16,6 +16,7 @@
             --text-secondary: #CCCCCC;
             --success: #4CAF50;
             --warning: #FF9800;
+            --card-max-width: 800px;
         }
         
         * {
@@ -32,21 +33,21 @@
             line-height: 1.6;
         }
         
-        /* Floating Music Player - Updated */
+        /* Floating Music Player - Updated with larger toggle and proper styling */
         .floating-player {
             position: fixed;
             bottom: 20px;
             right: 20px;
             background: var(--secondary);
             border: 1px solid var(--accent);
-            border-radius: 15px;
-            padding: 20px;
+            border-radius: 15px 0 0 15px;
+            padding: 15px;
             box-shadow: var(--glow);
             z-index: 1500;
-            transform: translateX(320px);
+            transform: translateX(280px);
             transition: transform 0.3s ease;
-            width: 300px;
-            max-width: 300px;
+            width: 280px;
+            max-width: 280px;
         }
         
         .floating-player.active {
@@ -55,45 +56,57 @@
         
         .player-toggle {
             position: absolute;
-            left: -30px;
+            left: -40px;
             top: 50%;
             transform: translateY(-50%);
             background: var(--accent);
             border: none;
             color: var(--text);
-            padding: 8px;
+            padding: 10px;
             border-radius: 50% 0 0 50%;
             cursor: pointer;
-            font-size: 0.9rem;
-            width: 30px;
-            height: 30px;
+            font-size: 1rem;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: var(--glow);
+            transition: all 0.3s ease;
+        }
+        
+        .player-toggle:hover {
+            background: var(--accent-light);
+            transform: translateY(-50%) scale(1.1);
         }
         
         .player-info {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .player-info img {
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
             border-radius: 5px;
             object-fit: cover;
         }
         
         .song-details h4 {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             margin-bottom: 2px;
         }
         
         .song-details p {
             font-size: 0.7rem;
             color: var(--text-secondary);
+        }
+        
+        .floating-player audio {
+            width: 100%;
+            height: 30px;
         }
         
         /* Navigation */
@@ -179,7 +192,7 @@
             box-shadow: 0 5px 20px var(--accent);
         }
         
-        /* Hero Section with Video Background */
+        /* Hero Section with Video Background - Fixed positioning */
         .hero {
             height: 100vh;
             min-height: 600px;
@@ -190,6 +203,7 @@
             position: relative;
             overflow: hidden;
             text-align: left;
+            touch-action: pan-y;
         }
         
         .hero-video {
@@ -290,18 +304,18 @@
             transform: translateY(-3px);
         }
         
-        /* Daily Verse Widget - Updated */
+        /* Daily Verse Widget - Updated with larger toggle */
         .daily-verse {
             position: fixed;
             top: 50%;
-            left: -300px;
+            left: -280px;
             transform: translateY(-50%);
             background: var(--secondary);
             border: 1px solid var(--accent);
             border-radius: 0 15px 15px 0;
             padding: 20px;
-            width: 300px;
-            max-width: 300px;
+            width: 280px;
+            max-width: 280px;
             box-shadow: var(--glow);
             z-index: 1400;
             transition: left 0.3s ease;
@@ -313,22 +327,29 @@
         
         .verse-toggle {
             position: absolute;
-            right: -30px;
+            right: -40px;
             top: 50%;
             transform: translateY(-50%);
             background: var(--accent);
             border: none;
             color: var(--text);
-            padding: 8px;
+            padding: 10px;
             border-radius: 0 50% 50% 0;
             cursor: pointer;
             font-size: 0.8rem;
             writing-mode: vertical-lr;
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: var(--glow);
+            transition: all 0.3s ease;
+        }
+        
+        .verse-toggle:hover {
+            background: var(--accent-light);
+            transform: translateY(-50%) scale(1.1);
         }
         
         .verse-content {
@@ -371,23 +392,24 @@
             box-shadow: var(--glow);
         }
         
-        /* Cards - Unified Style - Updated */
+        /* Cards - Unified Style - Updated with consistent width */
         .card {
             background: var(--secondary);
             padding: 30px;
-            border-radius: 10px;
+            border-radius: 15px;
             margin-bottom: 30px;
             box-shadow: var(--glow);
             border: 1px solid rgba(26, 63, 158, 0.3);
-            transition: transform 0.3s;
+            transition: transform 0.3s ease;
             width: 100%;
-            max-width: 600px;
+            max-width: var(--card-max-width);
             margin-left: auto;
             margin-right: auto;
         }
         
         .card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(26, 63, 158, 0.4);
         }
         
         /* About Section */
@@ -399,7 +421,7 @@
         
         .about-image {
             flex: 1;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
             box-shadow: var(--glow);
         }
@@ -426,6 +448,7 @@
             margin: 20px 0;
             background: rgba(26, 63, 158, 0.05);
             text-shadow: var(--glow);
+            border-radius: 0 10px 10px 0;
         }
         
         /* Music Section Enhanced */
@@ -435,11 +458,11 @@
         
         .preview-player {
             width: 100%;
-            max-width: 600px;
+            max-width: var(--card-max-width);
             margin: 0 auto 30px auto;
             background: var(--secondary);
             padding: 30px;
-            border-radius: 10px;
+            border-radius: 15px;
             box-shadow: var(--glow);
         }
         
@@ -451,27 +474,32 @@
         /* Upcoming Releases */
         .upcoming-releases {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
         
         .release-card {
             background: var(--secondary);
-            border-radius: 10px;
+            border-radius: 15px;
             padding: 20px;
             text-align: center;
             border: 1px solid var(--accent);
             box-shadow: var(--glow);
-            max-width: 600px;
+            max-width: var(--card-max-width);
             margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .release-card:hover {
+            transform: translateY(-5px);
         }
         
         .release-image {
             width: 100%;
             height: 200px;
             background: linear-gradient(45deg, var(--accent), var(--accent-light));
-            border-radius: 10px;
+            border-radius: 15px;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
@@ -491,7 +519,7 @@
             text-align: center;
             background: var(--accent);
             padding: 10px;
-            border-radius: 5px;
+            border-radius: 10px;
             min-width: 50px;
         }
         
@@ -505,7 +533,7 @@
             color: var(--text-secondary);
         }
         
-        /* Blog/Devotional Section - Updated */
+        /* Blog/Devotional Section - Updated with rounded edges */
         .blog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -515,12 +543,17 @@
         
         .blog-post {
             background: var(--secondary);
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
             box-shadow: var(--glow);
             border: 1px solid var(--accent);
-            max-width: 600px;
+            max-width: var(--card-max-width);
             margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .blog-post:hover {
+            transform: translateY(-5px);
         }
         
         .blog-image {
@@ -562,7 +595,7 @@
             padding: 50px;
             border-radius: 15px;
             margin: 60px auto;
-            max-width: 800px;
+            max-width: var(--card-max-width);
             box-shadow: var(--glow);
             text-align: center;
         }
@@ -575,7 +608,7 @@
         /* Event Calendar */
         .calendar-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 20px;
             margin-top: 40px;
         }
@@ -584,10 +617,15 @@
             background: var(--secondary);
             border-left: 4px solid var(--accent);
             padding: 20px;
-            border-radius: 0 10px 10px 0;
+            border-radius: 0 15px 15px 0;
             box-shadow: var(--glow);
-            max-width: 600px;
+            max-width: var(--card-max-width);
             margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-3px);
         }
         
         .event-date {
@@ -607,13 +645,13 @@
             font-size: 0.8rem;
         }
         
-        /* Newsletter Signup - Updated to match music card */
+        /* Newsletter Signup - Updated to match card width */
         .newsletter-section {
             background: var(--secondary);
             padding: 30px;
-            border-radius: 10px;
+            border-radius: 15px;
             margin: 60px auto;
-            max-width: 600px;
+            max-width: var(--card-max-width);
             box-shadow: var(--glow);
             text-align: center;
         }
@@ -631,7 +669,7 @@
             flex: 1;
             padding: 12px;
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
             background: rgba(255,255,255,0.1);
             color: var(--text);
             border: 1px solid var(--accent);
@@ -646,38 +684,47 @@
             background: var(--accent);
             color: var(--text);
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
             cursor: pointer;
             font-weight: 600;
+            transition: all 0.3s ease;
         }
         
-        /* Horizontal Gallery for both Testimonies and Gallery sections - Updated */
+        .newsletter-btn:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+        }
+        
+        /* Improved Gallery System */
         .horizontal-gallery-container {
             width: 100%;
             overflow: hidden;
             position: relative;
             margin: 20px 0;
+            border-radius: 15px;
         }
         
         .horizontal-gallery {
             display: flex;
             gap: 20px;
             padding: 20px 0;
-            transition: transform 0.5s ease;
-            width: calc(300px * 5);
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
         }
         
         .horizontal-gallery img {
             width: 300px;
             height: 300px;
             object-fit: cover;
-            border-radius: 10px;
+            border-radius: 15px;
             box-shadow: var(--glow);
-            cursor: grab;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
         }
         
-        .horizontal-gallery img:active {
-            cursor: grabbing;
+        .horizontal-gallery img:hover {
+            transform: scale(1.05);
         }
         
         .gallery-controls {
@@ -691,16 +738,23 @@
             background: var(--accent);
             border: none;
             color: var(--text);
-            padding: 10px 15px;
+            padding: 12px 16px;
             border-radius: 50%;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             font-size: 1rem;
+            box-shadow: var(--glow);
         }
         
         .gallery-btn:hover {
             background: var(--accent-light);
             transform: scale(1.1);
+        }
+        
+        .gallery-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
         }
         
         /* Fan Testimonies */
@@ -711,12 +765,17 @@
         .testimony-card {
             background: var(--secondary);
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 15px;
             margin-bottom: 20px;
             border-left: 4px solid var(--accent);
             box-shadow: var(--glow);
-            max-width: 600px;
-            margin: 0 auto;
+            max-width: var(--card-max-width);
+            margin: 0 auto 20px auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .testimony-card:hover {
+            transform: translateY(-3px);
         }
         
         .testimony-text {
@@ -737,7 +796,7 @@
             padding: 40px;
             border-radius: 15px;
             margin: 40px auto;
-            max-width: 800px;
+            max-width: var(--card-max-width);
             box-shadow: var(--glow);
         }
         
@@ -752,13 +811,14 @@
             text-align: center;
             padding: 20px;
             border: 1px solid var(--accent);
-            border-radius: 10px;
+            border-radius: 15px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
         }
         
         .download-item:hover {
             background: var(--accent);
+            transform: translateY(-3px);
         }
         
         .download-icon {
@@ -771,32 +831,34 @@
             color: var(--text);
         }
         
-        /* Photo Gallery - Updated to horizontal */
+        /* Photo Gallery - Updated with smooth scrolling */
         .photo-gallery-container {
             width: 100%;
             overflow: hidden;
             position: relative;
             margin: 20px 0;
+            border-radius: 15px;
         }
         
         .photo-gallery {
             display: flex;
             gap: 20px;
             padding: 20px 0;
-            transition: transform 0.5s ease;
-            width: calc(300px * 6);
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
         }
         
         .photo-item {
             width: 300px;
             height: 300px;
             background: var(--secondary);
-            border-radius: 10px;
+            border-radius: 15px;
             background-size: cover;
             background-position: center;
             box-shadow: var(--glow);
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
         }
         
         .photo-item:hover {
@@ -807,8 +869,8 @@
         .booking-form {
             background: var(--secondary);
             padding: 30px;
-            border-radius: 10px;
-            max-width: 800px;
+            border-radius: 15px;
+            max-width: var(--card-max-width);
             margin: 0 auto;
             box-shadow: var(--glow);
         }
@@ -832,8 +894,17 @@
             padding: 12px;
             background-color: rgba(255,255,255,0.1);
             border: 1px solid var(--accent);
-            border-radius: 5px;
+            border-radius: 10px;
             color: var(--text);
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-light);
+            box-shadow: 0 0 10px rgba(26, 63, 158, 0.3);
         }
         
         .form-group input::placeholder,
@@ -846,7 +917,7 @@
             margin-top: 20px;
             padding: 20px;
             background: rgba(26, 63, 158, 0.1);
-            border-radius: 5px;
+            border-radius: 10px;
             border-left: 3px solid var(--accent);
         }
         
@@ -863,7 +934,7 @@
             padding: 40px;
             border-radius: 15px;
             margin: 40px auto;
-            max-width: 800px;
+            max-width: var(--card-max-width);
             box-shadow: var(--glow);
             text-align: center;
         }
@@ -893,7 +964,7 @@
             width: 100%;
             height: 300px;
             background: var(--primary);
-            border-radius: 10px;
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -905,11 +976,11 @@
         /* Mission Section - Updated */
         .mission-section {
             text-align: center;
-            padding: 40px 5%;
+            padding: 40px;
             background: var(--secondary);
-            border-radius: 10px;
+            border-radius: 15px;
             margin: 60px auto;
-            max-width: 800px;
+            max-width: var(--card-max-width);
             box-shadow: var(--glow);
         }
         
@@ -950,19 +1021,24 @@
         
         .feed-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 20px;
             margin-top: 30px;
         }
         
         .feed-item {
             background: var(--secondary);
-            border-radius: 10px;
+            border-radius: 15px;
             padding: 20px;
             box-shadow: var(--glow);
             border: 1px solid rgba(26, 63, 158, 0.3);
-            max-width: 600px;
+            max-width: var(--card-max-width);
             margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .feed-item:hover {
+            transform: translateY(-3px);
         }
         
         .feed-header {
@@ -1007,13 +1083,17 @@
         .social-icons a {
             color: var(--text);
             font-size: 1.5rem;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             text-shadow: var(--glow);
+            padding: 10px;
+            border-radius: 50%;
+            background: rgba(26, 63, 158, 0.1);
         }
         
         .social-icons a:hover {
             color: var(--accent);
             transform: translateY(-5px);
+            background: rgba(26, 63, 158, 0.2);
         }
         
         .contact-info {
@@ -1027,9 +1107,18 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            padding: 10px 20px;
+            background: rgba(26, 63, 158, 0.1);
+            border-radius: 25px;
+            transition: all 0.3s ease;
         }
         
-        /* Payment Modal - Fixed */
+        .contact-item:hover {
+            background: rgba(26, 63, 158, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Payment Modal - Enhanced */
         .modal {
             display: none;
             position: fixed;
@@ -1040,6 +1129,7 @@
             height: 100%;
             background-color: rgba(0,0,0,0.8);
             overflow-y: auto;
+            backdrop-filter: blur(5px);
         }
         
         .modal-content {
@@ -1047,7 +1137,7 @@
             margin: 5% auto;
             padding: 30px;
             border: 1px solid var(--accent);
-            border-radius: 10px;
+            border-radius: 15px;
             width: 90%;
             max-width: 500px;
             box-shadow: var(--glow);
@@ -1059,10 +1149,16 @@
         .close-modal {
             position: absolute;
             right: 20px;
-            top: 10px;
+            top: 15px;
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--text);
+            transition: all 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            color: var(--accent);
+            transform: scale(1.1);
         }
         
         .payment-form {
@@ -1075,8 +1171,15 @@
             margin-bottom: 15px;
             background: rgba(255,255,255,0.1);
             border: 1px solid var(--accent);
-            border-radius: 5px;
+            border-radius: 10px;
             color: var(--text);
+            transition: all 0.3s ease;
+        }
+        
+        .payment-form input:focus {
+            outline: none;
+            border-color: var(--accent-light);
+            box-shadow: 0 0 10px rgba(26, 63, 158, 0.3);
         }
         
         .payment-form input::placeholder {
@@ -1094,9 +1197,9 @@
             padding: 15px;
             text-align: center;
             border: 1px solid var(--accent);
-            border-radius: 5px;
+            border-radius: 10px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
         }
         
         .payment-option.selected {
@@ -1138,16 +1241,18 @@
             color: var(--text);
             text-decoration: none;
             border: 1px solid var(--accent);
-            padding: 8px 20px;
+            padding: 12px 25px;
             border-radius: 30px;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             text-shadow: var(--glow);
             cursor: pointer;
+            font-weight: 600;
         }
         
         .donation-link:hover {
             background: var(--accent);
             transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(26, 63, 158, 0.4);
         }
         
         /* Success Messages */
@@ -1155,7 +1260,7 @@
             background: var(--success);
             color: var(--text);
             padding: 15px;
-            border-radius: 5px;
+            border-radius: 10px;
             margin-top: 15px;
             text-align: center;
             display: none;
@@ -1163,6 +1268,10 @@
         
         /* Responsive Design */
         @media (max-width: 768px) {
+            :root {
+                --card-max-width: 100%;
+            }
+            
             .hamburger {
                 display: block;
             }
@@ -1198,15 +1307,13 @@
             
             .about-content {
                 flex-direction: column;
+                gap: 30px;
             }
             
-            .horizontal-gallery img {
+            .horizontal-gallery img,
+            .photo-item {
                 width: 250px;
                 height: 250px;
-            }
-            
-            .horizontal-gallery {
-                width: calc(270px * 5);
             }
             
             .contact-info {
@@ -1219,13 +1326,14 @@
             }
             
             .mission-section {
-                padding: 40px 5%;
+                padding: 30px 20px;
                 margin: 40px 5%;
             }
             
             .modal-content {
                 margin: 10% auto;
                 width: 95%;
+                padding: 20px;
             }
             
             .newsletter-form {
@@ -1233,17 +1341,18 @@
             }
             
             .floating-player {
-                min-width: 250px;
+                width: 250px;
                 transform: translateX(270px);
             }
             
             .daily-verse {
                 left: -250px;
-                max-width: 250px;
+                width: 250px;
             }
             
             .blog-grid,
-            .upcoming-releases {
+            .upcoming-releases,
+            .calendar-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -1254,6 +1363,84 @@
             .countdown-item {
                 min-width: 40px;
                 padding: 8px;
+            }
+            
+            .card {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+            
+            .prayer-section,
+            .live-stream,
+            .press-kit {
+                padding: 30px 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 0.9rem;
+            }
+            
+            .hero-tagline {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .floating-player {
+                width: 220px;
+                transform: translateX(240px);
+                padding: 12px;
+            }
+            
+            .daily-verse {
+                left: -220px;
+                width: 220px;
+                padding: 15px;
+            }
+            
+            .player-info img {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .song-details h4 {
+                font-size: 0.7rem;
+            }
+            
+            .song-details p {
+                font-size: 0.6rem;
+            }
+            
+            .verse-content {
+                font-size: 0.8rem;
+            }
+        }
+        
+        /* Smooth scrolling for page */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Performance optimizations */
+        .horizontal-gallery,
+        .photo-gallery {
+            contain: layout style paint;
+        }
+        
+        /* Touch improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .card:hover,
+            .gallery-btn:hover,
+            .social-icons a:hover {
+                transform: none;
+            }
+            
+            .card:active {
+                transform: translateY(-3px);
             }
         }
     </style>
@@ -1308,11 +1495,6 @@
 
     <!-- Hero Section with Video Background -->
     <section class="hero" id="home">
-        <!-- Placeholder for video background - replace with actual performance video -->
-        <!-- <video class="hero-video" autoplay muted loop>
-            <source src="your-performance-video.mp4" type="video/mp4">
-        </video> -->
-        
         <div class="hero-content">
             <h1>PROMISE DAN MINISTRY</h1>
             <p class="hero-tagline">Worship Deep. Praise Wild.</p>
@@ -1331,7 +1513,7 @@
         </div>
     </section>
 
-    <!-- Newsletter Signup - Updated to match music card -->
+    <!-- Newsletter Signup -->
     <section class="newsletter-section">
         <h2>Join the Promise Dan Family</h2>
         <p>Get exclusive worship resources, behind-the-scenes content, and be the first to hear new releases!</p>
@@ -1489,7 +1671,7 @@
     </section>
 
     <!-- Prayer Request Section -->
-    <section class="prayer-section card">
+    <section class="prayer-section card" id="prayer">
         <h2>Send Your Prayer Request</h2>
         <div class="verse">
             "Therefore confess your sins to each other and pray for each other so that you may be healed. The prayer of a righteous person is powerful and effective." - James 5:16
@@ -1549,7 +1731,7 @@
         </div>
     </section>
 
-    <!-- Photo Gallery - Updated to horizontal -->
+    <!-- Photo Gallery -->
     <section>
         <h2 class="section-title">Gallery</h2>
         <div class="photo-gallery-container">
@@ -1562,10 +1744,10 @@
                 <div class="photo-item" style="background-image: url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3')"></div>
             </div>
             <div class="gallery-controls">
-                <button class="gallery-btn" onclick="slidePhotoGallery('left')">
+                <button class="gallery-btn" id="photoLeftBtn" onclick="slidePhotoGallery('left')">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <button class="gallery-btn" onclick="slidePhotoGallery('right')">
+                <button class="gallery-btn" id="photoRightBtn" onclick="slidePhotoGallery('right')">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
@@ -1682,10 +1864,10 @@
                     <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3" alt="Concert">
                 </div>
                 <div class="gallery-controls">
-                    <button class="gallery-btn" onclick="slideTestimonyGallery('left')">
+                    <button class="gallery-btn" id="testimonyLeftBtn" onclick="slideTestimonyGallery('left')">
                         <i class="fas fa-chevron-left"></i>
                     </button>
-                    <button class="gallery-btn" onclick="slideTestimonyGallery('right')">
+                    <button class="gallery-btn" id="testimonyRightBtn" onclick="slideTestimonyGallery('right')">
                         <i class="fas fa-chevron-right"></i>
                     </button>
                 </div>
@@ -1770,7 +1952,7 @@
         </div>
     </section>
 
-    <!-- Mission Section - Updated -->
+    <!-- Mission Section -->
     <section class="mission-section card">
         <h3>Join Me in This Mission</h3>
         <p>This ministry is just beginning, and I need you. Not just as a listener, but as a <em>co-laborer</em>. When my first single drops, it'll be our victory, not just mine.</p>
@@ -1857,7 +2039,9 @@
         let selectedPayment = '';
         let currentTestimonyGalleryIndex = 0;
         let currentPhotoGalleryIndex = 0;
-        const maxGalleryIndex = 4;
+        const maxGalleryIndex = 3; // Reduced for smoother scrolling
+        const testimonyGalleryWidth = 5; // Total images
+        const photoGalleryWidth = 6; // Total images
 
         // Daily verses array
         const dailyVerses = [
@@ -1905,7 +2089,6 @@
 
         // Countdown timer for upcoming release
         function updateCountdown() {
-            // Set your release date here (example: March 1, 2024)
             const releaseDate = new Date('2024-03-01T00:00:00').getTime();
             const now = new Date().getTime();
             const distance = releaseDate - now;
@@ -1981,8 +2164,6 @@
             e.preventDefault();
             const email = this.querySelector('.newsletter-input').value;
             
-            // Here you would integrate with your email service (MailChimp, ConvertKit, etc.)
-            // For now, we'll show success message
             document.getElementById('newsletterSuccess').style.display = 'block';
             this.reset();
             
@@ -1999,7 +2180,6 @@
             const email = document.getElementById('prayer-email').value;
             const request = document.getElementById('prayer-request').value;
             
-            // Create email body for prayer request
             const emailBody = `
 New Prayer Request
 
@@ -2013,11 +2193,9 @@ ${request}
 Submitted from Promise Dan Ministry website
             `;
             
-            // Send to your email
             const mailtoLink = `mailto:iampromisedan@gmail.com?subject=Prayer Request from ${name}&body=${encodeURIComponent(emailBody)}`;
             window.location.href = mailtoLink;
             
-            // Show success message
             document.getElementById('prayerSuccess').style.display = 'block';
             this.reset();
             
@@ -2028,7 +2206,6 @@ Submitted from Promise Dan Ministry website
 
         // Download press kit files
         function downloadFile(type) {
-            // In a real implementation, these would link to actual files
             const files = {
                 bio: 'promise-dan-bio.pdf',
                 photos: 'promise-dan-photos.zip',
@@ -2037,10 +2214,9 @@ Submitted from Promise Dan Ministry website
             };
             
             alert(`Downloading ${type}... (This would download: ${files[type]})`);
-            // In reality: window.open(`/downloads/${files[type]}`, '_blank');
         }
 
-        // Fixed Booking Form Submission
+        // Booking Form Submission
         document.getElementById('bookingForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -2105,115 +2281,133 @@ ${message}
             }
         });
 
-        // Testimony Gallery Slider
+        // Enhanced Gallery Functions with smooth scrolling and button states
+        function updateGalleryButtons() {
+            // Update testimony gallery buttons
+            const testimonyLeftBtn = document.getElementById('testimonyLeftBtn');
+            const testimonyRightBtn = document.getElementById('testimonyRightBtn');
+            
+            testimonyLeftBtn.disabled = currentTestimonyGalleryIndex === 0;
+            testimonyRightBtn.disabled = currentTestimonyGalleryIndex >= maxGalleryIndex;
+            
+            // Update photo gallery buttons
+            const photoLeftBtn = document.getElementById('photoLeftBtn');
+            const photoRightBtn = document.getElementById('photoRightBtn');
+            
+            photoLeftBtn.disabled = currentPhotoGalleryIndex === 0;
+            photoRightBtn.disabled = currentPhotoGalleryIndex >= maxGalleryIndex;
+        }
+
         function slideTestimonyGallery(direction) {
             const gallery = document.getElementById('testimonyGallery');
             const imageWidth = 320; // Width + gap
             
-            if (direction === 'left') {
-                currentTestimonyGalleryIndex = Math.max(0, currentTestimonyGalleryIndex - 1);
-            } else {
-                currentTestimonyGalleryIndex = Math.min(maxGalleryIndex, currentTestimonyGalleryIndex + 1);
+            if (direction === 'left' && currentTestimonyGalleryIndex > 0) {
+                currentTestimonyGalleryIndex--;
+            } else if (direction === 'right' && currentTestimonyGalleryIndex < maxGalleryIndex) {
+                currentTestimonyGalleryIndex++;
             }
             
             const translateX = -currentTestimonyGalleryIndex * imageWidth;
             gallery.style.transform = `translateX(${translateX}px)`;
+            updateGalleryButtons();
         }
 
-        // Photo Gallery Slider
         function slidePhotoGallery(direction) {
             const gallery = document.getElementById('photoGallery');
             const imageWidth = 320; // Width + gap
             
-            if (direction === 'left') {
-                currentPhotoGalleryIndex = Math.max(0, currentPhotoGalleryIndex - 1);
-            } else {
-                currentPhotoGalleryIndex = Math.min(maxGalleryIndex, currentPhotoGalleryIndex + 1);
+            if (direction === 'left' && currentPhotoGalleryIndex > 0) {
+                currentPhotoGalleryIndex--;
+            } else if (direction === 'right' && currentPhotoGalleryIndex < maxGalleryIndex) {
+                currentPhotoGalleryIndex++;
             }
             
             const translateX = -currentPhotoGalleryIndex * imageWidth;
             gallery.style.transform = `translateX(${translateX}px)`;
+            updateGalleryButtons();
         }
 
-        // Touch/Swipe support for horizontal galleries
-        function setupGalleryDrag(galleryId, currentIndexVar) {
-            const gallery = document.getElementById(galleryId);
-            let startX = 0;
-            let currentX = 0;
-            let isDragging = false;
+        // Enhanced touch/swipe support with improved performance
+        function setupGalleryTouchEvents() {
+            const galleries = [
+                { element: document.getElementById('testimonyGallery'), slideFunction: slideTestimonyGallery },
+                { element: document.getElementById('photoGallery'), slideFunction: slidePhotoGallery }
+            ];
 
-            gallery.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].clientX;
-                isDragging = true;
-            });
+            galleries.forEach(({ element, slideFunction }) => {
+                let startX = 0;
+                let currentX = 0;
+                let isDragging = false;
+                let hasMoved = false;
 
-            gallery.addEventListener('touchmove', (e) => {
-                if (!isDragging) return;
-                currentX = e.touches[0].clientX;
-            });
+                // Touch events
+                element.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                    hasMoved = false;
+                }, { passive: true });
 
-            gallery.addEventListener('touchend', () => {
-                if (!isDragging) return;
-                
-                const deltaX = startX - currentX;
-                const threshold = 50;
-                
-                if (deltaX > threshold) {
-                    if (galleryId === 'testimonyGallery') {
-                        slideTestimonyGallery('right');
-                    } else {
-                        slidePhotoGallery('right');
+                element.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    currentX = e.touches[0].clientX;
+                    hasMoved = true;
+                }, { passive: true });
+
+                element.addEventListener('touchend', () => {
+                    if (!isDragging || !hasMoved) return;
+                    
+                    const deltaX = startX - currentX;
+                    const threshold = 50;
+                    
+                    if (Math.abs(deltaX) > threshold) {
+                        slideFunction(deltaX > 0 ? 'right' : 'left');
                     }
-                } else if (deltaX < -threshold) {
-                    if (galleryId === 'testimonyGallery') {
-                        slideTestimonyGallery('left');
-                    } else {
-                        slidePhotoGallery('left');
+                    
+                    isDragging = false;
+                    hasMoved = false;
+                }, { passive: true });
+
+                // Mouse events
+                element.addEventListener('mousedown', (e) => {
+                    startX = e.clientX;
+                    isDragging = true;
+                    hasMoved = false;
+                    element.style.cursor = 'grabbing';
+                    e.preventDefault();
+                });
+
+                element.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    currentX = e.clientX;
+                    hasMoved = true;
+                });
+
+                element.addEventListener('mouseup', () => {
+                    if (!isDragging) return;
+                    
+                    if (hasMoved) {
+                        const deltaX = startX - currentX;
+                        const threshold = 50;
+                        
+                        if (Math.abs(deltaX) > threshold) {
+                            slideFunction(deltaX > 0 ? 'right' : 'left');
+                        }
                     }
-                }
-                
-                isDragging = false;
-            });
+                    
+                    isDragging = false;
+                    hasMoved = false;
+                    element.style.cursor = 'grab';
+                });
 
-            // Mouse drag support for gallery
-            gallery.addEventListener('mousedown', (e) => {
-                startX = e.clientX;
-                isDragging = true;
-                gallery.style.cursor = 'grabbing';
-            });
+                element.addEventListener('mouseleave', () => {
+                    isDragging = false;
+                    hasMoved = false;
+                    element.style.cursor = 'grab';
+                });
 
-            gallery.addEventListener('mousemove', (e) => {
-                if (!isDragging) return;
-                currentX = e.clientX;
-            });
-
-            gallery.addEventListener('mouseup', () => {
-                if (!isDragging) return;
-                
-                const deltaX = startX - currentX;
-                const threshold = 50;
-                
-                if (deltaX > threshold) {
-                    if (galleryId === 'testimonyGallery') {
-                        slideTestimonyGallery('right');
-                    } else {
-                        slidePhotoGallery('right');
-                    }
-                } else if (deltaX < -threshold) {
-                    if (galleryId === 'testimonyGallery') {
-                        slideTestimonyGallery('left');
-                    } else {
-                        slidePhotoGallery('left');
-                    }
-                }
-                
-                isDragging = false;
-                gallery.style.cursor = 'grab';
-            });
-
-            gallery.addEventListener('mouseleave', () => {
-                isDragging = false;
-                gallery.style.cursor = 'grab';
+                // Prevent context menu on long press
+                element.addEventListener('contextmenu', (e) => e.preventDefault());
             });
         }
 
@@ -2239,7 +2433,7 @@ ${message}
             }
         }
         
-        // Fixed Payment Method Selection
+        // Payment Method Selection
         document.querySelectorAll('.payment-option').forEach(option => {
             option.addEventListener('click', function() {
                 document.querySelectorAll('.payment-option').forEach(opt => {
@@ -2283,7 +2477,7 @@ ${message}
             this.value = this.value.replace(/[^\d]/g, '').substring(0,4);
         });
         
-        // Fixed Flutterwave Payment Integration
+        // Payment Form Submission
         document.getElementById('paymentForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const amount = document.getElementById('donationAmount').value;
@@ -2335,48 +2529,16 @@ ${message}
                     paymentOptions = 'card,banktransfer';
             }
             
-            const flutterwavePublicKey = 'FLWPUBK-24a830b6d427f41bb251292499a63f5e-X';
-            
-            if (typeof FlutterwaveCheckout === 'undefined') {
-                alert('Payment system is loading. Please try again in a moment.');
-                return;
-            }
-            
-            FlutterwaveCheckout({
-                public_key: flutterwavePublicKey,
-                tx_ref: "PDM_" + Math.floor(Math.random() * 1000000000 + 1),
-                amount: amount,
-                currency: "USD",
-                payment_options: paymentOptions,
-                customer: {
-                    email: "iampromisedan@gmail.com",
-                    phone_number: "+2347016905148",
-                    name: "Promise Dan Supporter",
-                },
-                customizations: {
-                    title: "Promise Dan Ministry",
-                    description: "Donation to support gospel music ministry",
-                    logo: "https://i.ibb.co/84z7kvrq/promise-dan.jpg",
-                },
-                callback: function(response) {
-                    if (response.status === 'successful') {
-                        alert("Thank you for your donation! God bless you richly.");
-                    } else {
-                        alert("Payment was not completed. Please try again.");
-                    }
-                    modal.style.display = "none";
-                    document.body.style.overflow = 'auto';
-                    document.getElementById('paymentForm').reset();
-                    selectedPayment = '';
-                    document.querySelectorAll('.payment-option').forEach(opt => {
-                        opt.classList.remove('selected');
-                    });
-                    document.getElementById('cardDetails').style.display = 'none';
-                },
-                onclose: function() {
-                    console.log("Payment window closed");
-                }
+            // Simulate payment processing
+            alert(`Processing ${amount} donation via ${selectedPayment}...`);
+            modal.style.display = "none";
+            document.body.style.overflow = 'auto';
+            document.getElementById('paymentForm').reset();
+            selectedPayment = '';
+            document.querySelectorAll('.payment-option').forEach(opt => {
+                opt.classList.remove('selected');
             });
+            document.getElementById('cardDetails').style.display = 'none';
         });
         
         // Smooth scrolling for anchor links
@@ -2385,9 +2547,13 @@ ${message}
                 if (this.getAttribute('href') !== '#') {
                     e.preventDefault();
                     
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
                     
                     if (navLinks.classList.contains('active')) {
                         navLinks.classList.remove('active');
@@ -2400,36 +2566,52 @@ ${message}
             });
         });
 
-        // Initialize functions when page loads
-        window.addEventListener('load', function() {
+        // Optimize scroll performance
+        let ticking = false;
+        function updateNavbar() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateNavbar);
+                ticking = true;
+            }
+        });
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
             setDailyVerse();
             updateCountdown();
+            updateGalleryButtons();
+            setupGalleryTouchEvents();
             
             // Update countdown every minute
             setInterval(updateCountdown, 60000);
             
-            // Show daily verse after 3 seconds for 5 seconds
-            setTimeout(() => {
-                document.getElementById('dailyVerse').classList.add('show');
-                setTimeout(() => {
-                    document.getElementById('dailyVerse').classList.remove('show');
-                }, 5000);
-            }, 3000);
+            // Set current year in footer
+            document.querySelector('.copyright').textContent = `© ${new Date().getFullYear()} Promise Dan Ministry. All Rights Reserved.`;
             
-            // Show floating player after 3 seconds for 5 seconds
+            // Initialize audio players
+            document.querySelectorAll('audio').forEach(audio => {
+                audio.volume = 0.7; // Set default volume
+            });
+            
+            // Show floating player after 5 seconds
             setTimeout(() => {
                 document.getElementById('floatingPlayer').classList.add('active');
-                setTimeout(() => {
-                    document.getElementById('floatingPlayer').classList.remove('active');
-                }, 5000);
-            }, 3000);
+            }, 5000);
             
-            // Setup gallery drag functionality
-            setupGalleryDrag('testimonyGallery', 'currentTestimonyGalleryIndex');
-            setupGalleryDrag('photoGallery', 'currentPhotoGalleryIndex');
+            // Show daily verse after 10 seconds
+            setTimeout(() => {
+                document.getElementById('dailyVerse').classList.add('show');
+            }, 10000);
         });
     </script>
-    <!-- Flutterwave Payment Script -->
-    <script src="https://checkout.flutterwave.com/v3.js"></script>
 </body>
 </html>
