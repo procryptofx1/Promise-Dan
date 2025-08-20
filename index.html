@@ -204,6 +204,8 @@
             overflow: hidden;
             text-align: left;
             touch-action: pan-y;
+            width: 100vw;
+            margin: 0;
         }
         
         .hero-video {
@@ -1085,9 +1087,14 @@
             font-size: 1.5rem;
             transition: all 0.3s ease;
             text-shadow: var(--glow);
-            padding: 10px;
+            padding: 15px;
             border-radius: 50%;
             background: rgba(26, 63, 158, 0.1);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .social-icons a:hover {
@@ -1208,17 +1215,6 @@
         
         .payment-option:hover {
             background: rgba(26, 63, 158, 0.2);
-        }
-        
-        .card-details {
-            display: none;
-            margin-top: 20px;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
         }
         
         /* Footer */
@@ -2008,32 +2004,32 @@
                 
                 <div class="payment-options">
                     <div class="payment-option" data-method="card">
-                        <i class="fab fa-cc-visa"></i> Credit/Debit Card
+                        <i class="fab fa-cc-visa"></i> Card
                     </div>
-                    
-                    <div class="payment-option" data-method="transfer">
+                    <div class="payment-option" data-method="banktransfer">
                         <i class="fas fa-university"></i> Bank Transfer
                     </div>
-                    
-                    <div class="payment-option" data-method="paypal">
-                        <i class="fab fa-cc-paypal"></i> PayPal
+                    <div class="payment-option" data-method="ussd">
+                        <i class="fas fa-mobile-alt"></i> USSD
                     </div>
                 </div>
                 
-                <div id="cardDetails" class="card-details">
-                    <input type="text" id="cardNumber" placeholder="Card Number" pattern="[0-9]{16}" title="16-digit card number">
-                    <input type="text" id="cardName" placeholder="Name on Card">
-                    <div style="display: flex; gap: 10px;">
-                        <input type="text" id="cardExpiry" placeholder="MM/YY" pattern="(0[1-9]|1[0-2])\/[0-9]{2}" title="MM/YY format">
-                        <input type="text" id="cardCvv" placeholder="CVV" pattern="[0-9]{3,4}" title="3 or 4-digit CVV">
-                    </div>
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" required>
                 </div>
                 
-                <button type="submit" class="connect-button">Proceed to Payment</button>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                
+                <button type="submit" class="connect-button">Donate Now</button>
             </form>
         </div>
     </div>
 
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
     <script>
         // Global variables
         let selectedPayment = '';
@@ -2411,6 +2407,76 @@ ${message}
             });
         }
 
+        // Setup touch/swipe for widgets
+        function setupWidgetTouchEvents() {
+            const verseWidget = document.getElementById('dailyVerse');
+            const playerWidget = document.getElementById('floatingPlayer');
+            
+            let verseStartX = 0;
+            let verseCurrentX = 0;
+            let verseDragging = false;
+            
+            let playerStartX = 0;
+            let playerCurrentX = 0;
+            let playerDragging = false;
+            
+            // Verse widget touch events
+            verseWidget.addEventListener('touchstart', (e) => {
+                verseStartX = e.touches[0].clientX;
+                verseDragging = true;
+            }, { passive: true });
+            
+            verseWidget.addEventListener('touchmove', (e) => {
+                if (!verseDragging) return;
+                verseCurrentX = e.touches[0].clientX;
+            }, { passive: true });
+            
+            verseWidget.addEventListener('touchend', () => {
+                if (!verseDragging) return;
+                
+                const deltaX = verseStartX - verseCurrentX;
+                const threshold = 50;
+                
+                if (Math.abs(deltaX) > threshold) {
+                    if (deltaX > 0) {
+                        verseWidget.classList.remove('show');
+                    } else {
+                        verseWidget.classList.add('show');
+                    }
+                }
+                
+                verseDragging = false;
+            }, { passive: true });
+            
+            // Player widget touch events
+            playerWidget.addEventListener('touchstart', (e) => {
+                playerStartX = e.touches[0].clientX;
+                playerDragging = true;
+            }, { passive: true });
+            
+            playerWidget.addEventListener('touchmove', (e) => {
+                if (!playerDragging) return;
+                playerCurrentX = e.touches[0].clientX;
+            }, { passive: true });
+            
+            playerWidget.addEventListener('touchend', () => {
+                if (!playerDragging) return;
+                
+                const deltaX = playerStartX - playerCurrentX;
+                const threshold = 50;
+                
+                if (Math.abs(deltaX) > threshold) {
+                    if (deltaX > 0) {
+                        playerWidget.classList.remove('active');
+                    } else {
+                        playerWidget.classList.add('active');
+                    }
+                }
+                
+                playerDragging = false;
+            }, { passive: true });
+        }
+
         // Payment Modal
         const modal = document.getElementById('paymentModal');
         const btn = document.getElementById('donationBtn');
@@ -2442,104 +2508,66 @@ ${message}
                 
                 this.classList.add('selected');
                 selectedPayment = this.getAttribute('data-method');
-                
-                const cardDetails = document.getElementById('cardDetails');
-                if (selectedPayment === 'card') {
-                    cardDetails.style.display = 'block';
-                    document.getElementById('cardNumber').required = true;
-                    document.getElementById('cardName').required = true;
-                    document.getElementById('cardExpiry').required = true;
-                    document.getElementById('cardCvv').required = true;
-                } else {
-                    cardDetails.style.display = 'none';
-                    document.getElementById('cardNumber').required = false;
-                    document.getElementById('cardName').required = false;
-                    document.getElementById('cardExpiry').required = false;
-                    document.getElementById('cardCvv').required = false;
-                }
             });
         });
         
-        // Card validation
-        document.getElementById('cardNumber').addEventListener('input', function(e) {
-            this.value = this.value.replace(/[^\d]/g, '').substring(0,16);
-        });
-        
-        document.getElementById('cardExpiry').addEventListener('input', function(e) {
-            let value = this.value.replace(/[^\d]/g, '');
-            if (value.length >= 2) {
-                value = value.substring(0,2) + '/' + value.substring(2,4);
-            }
-            this.value = value;
-        });
-        
-        document.getElementById('cardCvv').addEventListener('input', function(e) {
-            this.value = this.value.replace(/[^\d]/g, '').substring(0,4);
-        });
-        
-        // Payment Form Submission
+        // Flutterwave Payment Integration
         document.getElementById('paymentForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            
             const amount = document.getElementById('donationAmount').value;
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
             
-            if (!selectedPayment) {
-                alert('Please select a payment method');
-                return;
-            }
+            // Replace with your Flutterwave LIVE Public Key
+            const FLW_PUBLIC_KEY = "FLWPUBK-XXXXXXXXXXXXXXXXXXXX-X";
             
-            if (selectedPayment === 'card') {
-                const cardNumber = document.getElementById('cardNumber').value;
-                const cardName = document.getElementById('cardName').value;
-                const cardExpiry = document.getElementById('cardExpiry').value;
-                const cardCvv = document.getElementById('cardCvv').value;
-                
-                if (!cardNumber || !cardName || !cardExpiry || !cardCvv) {
-                    alert('Please fill all card details');
-                    return;
-                }
-                
-                if (cardNumber.length !== 16) {
-                    alert('Please enter a valid 16-digit card number');
-                    return;
-                }
-                
-                if (!cardExpiry.match(/^(0[1-9]|1[0-2])\/[0-9]{2}$/)) {
-                    alert('Please enter expiry date in MM/YY format');
-                    return;
-                }
-                
-                if (cardCvv.length < 3 || cardCvv.length > 4) {
-                    alert('Please enter a valid CVV (3 or 4 digits)');
-                    return;
-                }
-            }
-            
-            let paymentOptions = '';
-            switch(selectedPayment) {
-                case 'card':
-                    paymentOptions = 'card';
-                    break;
-                case 'transfer':
-                    paymentOptions = 'banktransfer';
-                    break;
-                case 'paypal':
-                    paymentOptions = 'paypal';
-                    break;
-                default:
-                    paymentOptions = 'card,banktransfer';
-            }
-            
-            // Simulate payment processing
-            alert(`Processing ${amount} donation via ${selectedPayment}...`);
-            modal.style.display = "none";
-            document.body.style.overflow = 'auto';
-            document.getElementById('paymentForm').reset();
-            selectedPayment = '';
-            document.querySelectorAll('.payment-option').forEach(opt => {
-                opt.classList.remove('selected');
-            });
-            document.getElementById('cardDetails').style.display = 'none';
+            makePayment(amount, fullName, email, FLW_PUBLIC_KEY);
         });
+
+        function makePayment(amount, fullName, email, publicKey) {
+            FlutterwaveCheckout({
+                public_key: publicKey,
+                tx_ref: "PD-" + Date.now(), // Unique transaction reference
+                amount: amount,
+                currency: "USD", // Changed to USD as requested
+                payment_options: "card, banktransfer, ussd",
+                customer: {
+                    email: email,
+                    name: fullName,
+                },
+                customizations: {
+                    title: "Promise Dan Ministry",
+                    description: "Donation for Gospel Music Ministry",
+                    logo: "https://your-website.com/logo.png",
+                },
+                callback: function(response) {
+                    // Verify transaction on your backend
+                    verifyPayment(response.transaction_id);
+                },
+                onclose: function() {
+                    console.log("Payment window closed.");
+                },
+            });
+        }
+
+        function verifyPayment(transactionId) {
+            // Send transaction ID to your backend for verification
+            fetch('/verify-payment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ transaction_id: transactionId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "success") {
+                    alert("Payment successful! Thank you for your support.");
+                    document.getElementById('paymentModal').style.display = "none";
+                } else {
+                    alert("Payment verification failed. Please contact support.");
+                }
+            });
+        }
         
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -2590,6 +2618,7 @@ ${message}
             updateCountdown();
             updateGalleryButtons();
             setupGalleryTouchEvents();
+            setupWidgetTouchEvents();
             
             // Update countdown every minute
             setInterval(updateCountdown, 60000);
@@ -2602,15 +2631,17 @@ ${message}
                 audio.volume = 0.7; // Set default volume
             });
             
-            // Show floating player after 5 seconds
+            // Show floating player and verse after 5 seconds
             setTimeout(() => {
                 document.getElementById('floatingPlayer').classList.add('active');
-            }, 5000);
-            
-            // Show daily verse after 10 seconds
-            setTimeout(() => {
                 document.getElementById('dailyVerse').classList.add('show');
-            }, 10000);
+                
+                // Hide after another 5 seconds
+                setTimeout(() => {
+                    document.getElementById('floatingPlayer').classList.remove('active');
+                    document.getElementById('dailyVerse').classList.remove('show');
+                }, 5000);
+            }, 5000);
         });
     </script>
 </body>
