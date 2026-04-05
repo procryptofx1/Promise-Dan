@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Press Kit | Promise Dan – Gospel Artist | Uyo, Nigeria</title>
+    <meta name="description" content="Official press kit for Promise Dan, AfroGospel artist from Uyo, Akwa Ibom Nigeria. Access official biography, gallery, ministry story, and booking information.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.promisedan.com/press-kit.html">
+    <meta property="og:title" content="Press Kit – Promise Dan | Gospel Artist">
+    <meta property="og:description" content="Official press resources for Promise Dan. Biography, gallery, booking details and ministry story.">
+    <meta property="og:image" content="https://www.promisedan.com/images/pd-white-outfit.jpg">
+    <meta property="og:url" content="https://www.promisedan.com/press-kit.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #000;
+            --secondary: #0A0A0A;
+            --accent: #1A3F9E;
+            --accent-light: #2A4FAE;
+            --glow: 0 0 15px rgba(26,63,158,0.6);
+            --text: #fff;
+            --text-secondary: #ccc;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--primary);
+            color: var(--text);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 5%;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            box-shadow: var(--glow);
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: clamp(1rem, 3vw, 1.4rem);
+            color: var(--text);
+            text-decoration: none;
+            text-transform: uppercase;
+            text-shadow: var(--glow);
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 8px 18px;
+            border: 1px solid var(--accent);
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover { background: var(--accent); }
+
+        /* PAGE HEADER */
+        .page-header {
+            padding: 120px 5% 60px;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(26,63,158,0.12) 0%, transparent 100%);
+            border-bottom: 1px solid rgba(26,63,158,0.2);
+        }
+
+        .page-tag {
+            display: inline-block;
+            padding: 5px 16px;
+            background: var(--accent);
+            border-radius: 30px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 18px;
+        }
+
+        .page-header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            margin-bottom: 14px;
+            text-shadow: var(--glow);
+        }
+
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* MAIN GRID */
+        .pk-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: clamp(40px, 7vw, 70px) clamp(16px, 5%, 40px);
+        }
+
+        .pk-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: 24px;
+        }
+
+        /* CARDS */
+        .pk-card {
+            background: var(--secondary);
+            border: 1px solid rgba(26,63,158,0.3);
+            border-radius: 18px;
+            padding: clamp(22px, 4vw, 36px);
+            box-shadow: var(--glow);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            transition: transform 0.3s, border-color 0.3s;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .pk-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent);
+        }
+
+        .pk-card-icon {
+            width: 54px;
+            height: 54px;
+            background: rgba(26,63,158,0.2);
+            border: 1px solid var(--accent);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .pk-card h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            margin-bottom: 4px;
+        }
+
+        .pk-card p {
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .pk-card-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: auto;
+        }
+
+        .badge-page { color: var(--accent); }
+        .badge-download { color: #4CAF50; }
+
+        /* Divider */
+        .pk-divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 50px 0 30px;
+        }
+
+        .pk-divider span {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        .pk-divider::before,
+        .pk-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(26,63,158,0.3);
+        }
+
+        /* Quick facts strip */
+        .quick-facts {
+            background: rgba(26,63,158,0.08);
+            border: 1px solid rgba(26,63,158,0.25);
+            border-radius: 16px;
+            padding: clamp(20px, 4vw, 32px);
+            margin-top: 50px;
+        }
+
+        .quick-facts h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .fact-item { border-left: 2px solid var(--accent); padding-left: 14px; }
+
+        .fact-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .fact-value { font-size: 0.9rem; color: var(--text-secondary); }
+
+        /* Press contact */
+        .press-contact {
+            text-align: center;
+            margin-top: 50px;
+            padding: clamp(24px, 4vw, 40px);
+            background: var(--secondary);
+            border-radius: 16px;
+            border: 1px solid rgba(26,63,158,0.3);
+            box-shadow: var(--glow);
+        }
+
+        .press-contact h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .press-contact p { color: var(--text-secondary); margin-bottom: 20px; font-size: 0.9rem; }
+
+        .contact-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+        .contact-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 30px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .contact-pill:hover { background: var(--accent); transform: translateY(-2px); }
+
+        footer {
+            background: var(--secondary);
+            padding: 24px 5%;
+            text-align: center;
+            border-top: 1px solid rgba(26,63,158,0.3);
+            margin-top: 60px;
+        }
+
+        .copyright { color: var(--text-secondary); font-size: 0.8rem; }
+
+        @media (max-width: 480px) {
+            .pk-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">Promise Dan</a>
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Site
+        </a>
+    </nav>
+
+    <header class="page-header">
+        <span class="page-tag">Media &amp; Press</span>
+        <h1>Press Kit</h1>
+        <p>Everything media, event organisers, and booking agents need to know about Promise Dan Ministry.</p>
+    </header>
+
+    <main class="pk-wrap">
+
+        <!-- PAGE CARDS (open internal pages) -->
+        <div class="pk-divider"><span>Read Online</span></div>
+        <div class="pk-grid">
+
+            <a href="biography.html" class="pk-card">
+                <div class="pk-card-icon"><i class="fas fa-user" aria-hidden="true"></i></div>
+                <div>
+                    <h2>Official Biography</h2>
+                    <p>The full, in-depth story of Promise Dan — from Akwa Ibom to the altar, from a childhood drum kit to an AfroGospel calling that is shaking nations.</p>
+                </div>
+                <span class="pk-card-badge badge-page">
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i> Read Full Bio
+                </span>
+            </a>
+
+            <a href="ministry-story.html" class="pk-card">
+                <div class="pk-card-icon"><i class="fas fa-church" aria-hidden="true"></i></div>
+                <div>
+                    <h2>Ministry Story</h2>
+                    <p>Learn about the heart and vision of Promise Dan Ministry — what it stands for, who it serves, and the gospel mandate behind every song.</p>
+                </div>
+                <span class="pk-card-badge badge-page">
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i> Read Story
+                </span>
+            </a>
+
+            <a href="gallery.html" class="pk-card">
+                <div class="pk-card-icon"><i class="fas fa-images" aria-hidden="true"></i></div>
+                <div>
+                    <h2>Photo Gallery</h2>
+                    <p>Browse official ministry photos, performance moments, and behind-the-scenes images of Promise Dan in his element.</p>
+                </div>
+                <span class="pk-card-badge badge-page">
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i> View Gallery
+                </span>
+            </a>
+
+        </div>
+
+        <!-- DOWNLOAD CARDS -->
+        <div class="pk-divider"><span>Download Assets</span></div>
+        <div class="pk-grid">
+
+            <div class="pk-card" onclick="triggerDownload('photos')" style="cursor:pointer;" role="button" tabindex="0" aria-label="Download high resolution photos">
+                <div class="pk-card-icon" style="color:#4CAF50; border-color:#4CAF50; background:rgba(76,175,80,0.1);">
+                    <i class="fas fa-image" aria-hidden="true"></i>
+                </div>
+                <div>
+                    <h2>High-Res Photos</h2>
+                    <p>Download professional, print-ready promotional photos of Promise Dan for use in event programmes, posters, and media features.</p>
+                </div>
+                <span class="pk-card-badge badge-download">
+                    <i class="fas fa-download" aria-hidden="true"></i> Download ZIP
+                </span>
+            </div>
+
+            <div class="pk-card" onclick="triggerDownload('logos')" style="cursor:pointer;" role="button" tabindex="0" aria-label="Download logos and graphics">
+                <div class="pk-card-icon" style="color:#4CAF50; border-color:#4CAF50; background:rgba(76,175,80,0.1);">
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                </div>
+                <div>
+                    <h2>Logos &amp; Graphics</h2>
+                    <p>Official Promise Dan Ministry logos in PNG and SVG format for use on event banners, flyers, and digital promotions.</p>
+                </div>
+                <span class="pk-card-badge badge-download">
+                    <i class="fas fa-download" aria-hidden="true"></i> Download ZIP
+                </span>
+            </div>
+
+            <div class="pk-card" onclick="triggerDownload('rider')" style="cursor:pointer;" role="button" tabindex="0" aria-label="Download technical rider">
+                <div class="pk-card-icon" style="color:#4CAF50; border-color:#4CAF50; background:rgba(76,175,80,0.1);">
+                    <i class="fas fa-list-check" aria-hidden="true"></i>
+                </div>
+                <div>
+                    <h2>Technical Rider</h2>
+                    <p>Stage and sound requirements for event organisers and production teams hosting Promise Dan for concerts, revivals, and church services.</p>
+                </div>
+                <span class="pk-card-badge badge-download">
+                    <i class="fas fa-download" aria-hidden="true"></i> Download PDF
+                </span>
+            </div>
+
+        </div>
+
+        <!-- QUICK FACTS -->
+        <div class="quick-facts">
+            <h3>Quick Facts for Media</h3>
+            <div class="facts-grid">
+                <div class="fact-item">
+                    <div class="fact-label">Full Name</div>
+                    <div class="fact-value">Promise Dan</div>
+                </div>
+                <div class="fact-item">
+                    <div class="fact-label">Date of Birth</div>
+                    <div class="fact-value">May 27, 2006</div>
+                </div>
+                <div class="fact-item">
+                    <div class="fact-label">Origin</div>
+                    <div class="fact-value">Akwa Ibom State, Nigeria</div>
+                </div>
+                <div class="fact-item">
+                    <div class="fact-label">Based In</div>
+                    <div class="fact-value">Uyo, Akwa Ibom State</div>
+                </div>
+                <div class="fact-item">
+                    <div class="fact-label">Genre</div>
+                    <div class="fact-value">AfroGospel · Contemporary Worship</div>
+                </div>
+                <div class="fact-item">
+                    <div class="fact-label">Instruments</div>
+                    <div class="fact-value">Drums · Voice</div>
+                </div>
+                <div class="fact-item">
+                    <div class="fact-label">Ministry Founded</div>
+                    <div class="fact-value">Promise Dan Ministry</div>
+                </div>
+                <div class="fact-item">
+                    <div class="fact-label">Email</div>
+                    <div class="fact-value">
+                        <a href="mailto:iampromisedan@gmail.com" style="color:var(--accent); text-decoration:none;">iampromisedan@gmail.com</a>
+                    </div>
+                </div>
+                <div class="fact-item">
+                    <div class="fact-label">Phone</div>
+                    <div class="fact-value">+(234) 701-690-5148</div>
+                </div>
+                <div class="fact-item">
+                    <div class="fact-label">Status</div>
+                    <div class="fact-value">Upcoming · Debut Single Incoming</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRESS CONTACT -->
+        <div class="press-contact">
+            <h3>Press &amp; Booking Contact</h3>
+            <p>For interviews, features, event bookings, or any press enquiries, reach out directly:</p>
+            <div class="contact-links">
+                <a href="mailto:iampromisedan@gmail.com" class="contact-pill">
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                    iampromisedan@gmail.com
+                </a>
+                <a href="tel:+2347016905148" class="contact-pill">
+                    <i class="fas fa-phone" aria-hidden="true"></i>
+                    +(234) 701-690-5148
+                </a>
+                <a href="index.html#book" class="contact-pill">
+                    <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                    Book via Website
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p class="copyright">© <span id="yr"></span> Promise Dan Ministry. All Rights Reserved. | Uyo, Akwa Ibom, Nigeria</p>
+    </footer>
+
+    <script>
+        document.getElementById('yr').textContent = new Date().getFullYear();
+
+        function triggerDownload(type) {
+            const files = {
+                photos: 'promise-dan-promo-photos.zip',
+                logos:  'promise-dan-logos-graphics.zip',
+                rider:  'promise-dan-technical-rider.pdf'
+            };
+            // Replace alert with actual download links once files are uploaded
+            alert(`Preparing download: ${files[type]}\n\nTo activate: upload the file to your website root and replace this alert with:\nwindow.location.href = '${files[type]}';`);
+        }
+
+        // Keyboard support for download cards
+        document.querySelectorAll('[role="button"]').forEach(el => {
+            el.addEventListener('keydown', e => {
+                if (e.key === 'Enter' || e.key === ' ') el.click();
+            });
+        });
+    </script>
+</body>
+</html>
