@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Promise Dan — Gospel Artist & Worship Minister | AfroGospel | Nigeria</title>
+<meta name="description" content="Promise Dan is a Nigerian AfroGospel artist and worship minister from Uyo, Akwa Ibom State. Known for spirit-filled worship that heals, restores and transforms. Book Promise Dan for church services, concerts and revival meetings.">
+<meta name="keywords" content="Promise Dan, Promise Dan Ministry, AfroGospel Nigeria, Nigerian Gospel Artist, Promise Dan Uyo, Gospel Worship Minister, iampromisedan">
+<meta name="author" content="Promise Dan">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Promise Dan | Gospel Artist & Worship Minister">
+<meta property="og:description" content="Nigerian AfroGospel artist and worship minister. Through worship that ushers hearts into divine encounter — every melody is a gateway to healing, restoration, and transformation.">
+<meta property="og:image" content="https://i.ibb.co/84z7kvrq/promise-dan.jpg">
+<meta property="og:url" content="https://www.promisedan.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Promise Dan | Gospel Artist & Worship Minister">
+<meta name="twitter:image" content="https://i.ibb.co/84z7kvrq/promise-dan.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #ffffff;
+    --off-white: #f5f4f0;
+    --gray-light: #e8e6e0;
+    --gray-mid: #9a9890;
+    --gray-dark: #3a3835;
+    --accent: #c8b89a;
+    --text: #1a1a1a;
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--text);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 48px;
+    mix-blend-mode: normal;
+  }
+  nav.light { color: var(--white); }
+  nav.dark  { color: var(--text); background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); box-shadow: 0 1px 0 var(--gray-light); }
+
+  .nav-logo { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; letter-spacing: 0.02em; }
+  .nav-links { display: flex; gap: 36px; font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; }
+  .nav-links a { text-decoration: none; color: inherit; opacity: 0.85; transition: opacity 0.2s; }
+  .nav-links a:hover { opacity: 1; }
+  .nav-cta { font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
+  .nav-cta a {
+    text-decoration: none;
+    color: inherit;
+    border: 1.5px solid currentColor;
+    padding: 8px 20px;
+    border-radius: 30px;
+    transition: background 0.25s, color 0.25s;
+  }
+  nav.light .nav-cta a:hover { background: var(--white); color: var(--black); }
+  nav.dark  .nav-cta a:hover { background: var(--black); color: var(--white); }
+
+  /* ── HERO ── */
+  #hero {
+    position: relative;
+    height: 100vh;
+    min-height: 680px;
+    overflow: hidden;
+    background: var(--black);
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      160deg,
+      rgba(30,25,20,0.45) 0%,
+      rgba(10,10,10,0.70) 60%,
+      rgba(0,0,0,0.92) 100%
+    ),
+    url('https://i.ibb.co/84z7kvrq/promise-dan.jpg') center/cover no-repeat;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 60% 30%, rgba(200,184,154,0.08) 0%, transparent 70%);
+  }
+
+  .hero-tag-left {
+    position: absolute;
+    left: 48px;
+    bottom: 120px;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+  .hero-tag-right {
+    position: absolute;
+    right: 48px;
+    bottom: 120px;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    writing-mode: vertical-rl;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 0 48px 80px;
+  }
+
+  .hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(72px, 11vw, 160px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    animation: fadeUp 1s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    background: var(--white);
+    padding: 100px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .about-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    margin-bottom: 28px;
+  }
+
+  .about-text {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #444;
+    max-width: 480px;
+  }
+
+  .stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 48px;
+  }
+
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--gray-mid);
+    margin-top: 6px;
+    letter-spacing: 0.04em;
+  }
+
+  .about-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .about-images img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  .about-images img:first-child {
+    grid-column: 1 / -1;
+    aspect-ratio: 16/9;
+  }
+
+  /* ── MINISTRY (replaces Services) ── */
+  #ministry {
+    background: var(--off-white);
+    padding: 100px 48px;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    margin-bottom: 16px;
+  }
+
+  .section-heading {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 700;
+    margin-bottom: 60px;
+    max-width: 500px;
+    line-height: 1.2;
+  }
+
+  .services-list { border-top: 1px solid var(--gray-light); }
+
+  .service-item {
+    display: grid;
+    grid-template-columns: 40px 1fr auto;
+    align-items: start;
+    gap: 24px;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--gray-light);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .service-item:hover { background: rgba(200,184,154,0.06); }
+
+  .service-icon {
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid var(--gray-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-mid);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .service-body h3 {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .service-body p {
+    font-size: 0.88rem;
+    color: #666;
+    line-height: 1.65;
+    max-width: 560px;
+  }
+
+  .service-arrow {
+    font-size: 1.1rem;
+    color: var(--gray-mid);
+    margin-top: 2px;
+    transition: transform 0.2s;
+  }
+
+  .service-item:hover .service-arrow { transform: translateX(4px); }
+
+  /* ── MUSIC / PORTFOLIO ── */
+  #music { padding: 100px 48px; background: var(--white); }
+
+  .portfolio-intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 60px;
+  }
+
+  .portfolio-intro p {
+    font-size: 0.9rem;
+    color: #666;
+    max-width: 400px;
+    line-height: 1.65;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .project-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    background: var(--black);
+    cursor: pointer;
+  }
+
+  .project-card.wide { grid-column: span 2; }
+
+  .project-card img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease, opacity 0.3s;
+    opacity: 0.88;
+  }
+
+  .project-card.wide img { aspect-ratio: 16/8; }
+
+  .project-card:hover img { transform: scale(1.04); opacity: 0.75; }
+
+  .project-info {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 20px 22px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  }
+
+  .project-info h4 { font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; color: var(--white); }
+  .project-info span { font-size: 0.75rem; color: rgba(255,255,255,0.6); }
+
+  .view-all {
+    text-align: center;
+    margin-top: 48px;
+  }
+
+  .view-all a {
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1.5px solid var(--text);
+    padding-bottom: 3px;
+    transition: opacity 0.2s;
+  }
+
+  .view-all a:hover { opacity: 0.5; }
+
+  /* ── FEATURED ── */
+  .featured-project {
+    margin-top: 20px;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    background: #0d1117;
+  }
+
+  .featured-project img {
+    width: 100%;
+    display: block;
+    max-height: 420px;
+    object-fit: cover;
+    opacity: 0.85;
+  }
+
+  .featured-overlay {
+    position: absolute;
+    bottom: 0; left: 0;
+    padding: 32px 36px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.82));
+    width: 100%;
+  }
+
+  .featured-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .featured-overlay h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--white);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .featured-overlay p { font-size: 0.8rem; color: rgba(255,255,255,0.55); }
+
+  /* ── BOOKING SECTION ── */
+  #booking {
+    background: var(--off-white);
+    padding: 100px 48px;
+  }
+
+  .booking-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: start;
+    margin-top: 60px;
+  }
+
+  .booking-info h3 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+
+  .booking-info p {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.75;
+    margin-bottom: 32px;
+  }
+
+  .booking-types {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+
+  .booking-type-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.88rem;
+    color: #444;
+  }
+
+  .booking-type-item::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .booking-contact {
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    color: var(--gray-mid);
+    margin-bottom: 6px;
+  }
+
+  .booking-contact a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .booking-form-wrap {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.06);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--gray-light);
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--text);
+    background: var(--white);
+    transition: border-color 0.2s;
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--gray-dark);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 100px; }
+
+  .form-submit {
+    width: 100%;
+    padding: 14px;
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.25s;
+  }
+
+  .form-submit:hover { background: var(--gray-dark); }
+
+  .booking-success-msg {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    background: rgba(200,184,154,0.15);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: var(--gray-dark);
+    margin-top: 16px;
+    border: 1px solid var(--accent);
+  }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { padding: 100px 48px; background: var(--white); }
+
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-top: 48px;
+  }
+
+  .testimonial-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  .stars { color: #1a1a1a; font-size: 1.1rem; letter-spacing: 4px; margin-bottom: 28px; }
+
+  .testimonial-quote {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 2vw, 1.45rem);
+    line-height: 1.55;
+    color: var(--text);
+    margin-bottom: 32px;
+    font-style: italic;
+  }
+
+  .testimonial-author strong { display: block; font-weight: 600; font-size: 0.9rem; }
+  .testimonial-author span  { font-size: 0.8rem; color: var(--gray-mid); }
+
+  .testimonial-dots {
+    display: flex;
+    gap: 8px;
+    margin-top: 36px;
+  }
+
+  .dot {
+    width: 28px; height: 3px;
+    background: var(--gray-light);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .dot.active { background: var(--text); }
+
+  /* ── CTA / BOOKING CALL ── */
+  #cta {
+    background:
+      linear-gradient(rgba(15,13,10,0.78), rgba(15,13,10,0.78)),
+      url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1400&q=80') center/cover no-repeat;
+    padding: 120px 48px;
+    text-align: center;
+    color: var(--white);
+  }
+
+  #cta h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  #cta p {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.65);
+    max-width: 500px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+  }
+
+  .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--white);
+    color: var(--black);
+    padding: 14px 32px;
+    border-radius: 30px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.25s, color 0.25s;
+  }
+
+  .btn-primary:hover { background: var(--accent); }
+
+  .btn-ghost {
+    border: 1.5px solid rgba(255,255,255,0.4);
+    color: var(--white);
+    padding: 14px 32px;
+    border-radius: 30px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: border-color 0.25s, background 0.25s;
+  }
+
+  .btn-ghost:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    color: rgba(255,255,255,0.75);
+    padding: 72px 48px 40px;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr repeat(3, 1fr);
+    gap: 48px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .footer-brand .nav-logo { color: var(--white); font-size: 1.15rem; display: block; margin-bottom: 16px; }
+  .footer-brand p { font-size: 0.83rem; line-height: 1.65; color: rgba(255,255,255,0.45); max-width: 220px; }
+
+  .footer-col h5 {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 18px;
+  }
+
+  .footer-col a {
+    display: block;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover { color: var(--white); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 32px;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .social-links { display: flex; gap: 20px; }
+  .social-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.78rem; transition: color 0.2s; }
+  .social-links a:hover { color: var(--white); }
+
+  /* ── SCROLL BEHAVIOR ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    .nav-links { display: none; }
+    #about { grid-template-columns: 1fr; padding: 60px 24px; }
+    #ministry, #music, #testimonials, #cta, #booking { padding: 72px 24px; }
+    .projects-grid { grid-template-columns: 1fr 1fr; }
+    .project-card.wide { grid-column: span 2; }
+    .testimonial-grid { grid-template-columns: 1fr; }
+    .testimonial-photo { max-height: 300px; object-position: top; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .hero-content { padding: 0 24px 60px; }
+    .hero-tag-left, .hero-tag-right { display: none; }
+    .booking-grid { grid-template-columns: 1fr; gap: 40px; }
+    .booking-form-wrap { padding: 28px 20px; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.wide { grid-column: span 1; }
+    .footer-top { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+    .stats { flex-wrap: wrap; gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="light" id="navbar">
+  <div class="nav-logo">Promise Dan</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#ministry">Ministry</a>
+    <a href="#music">Music</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#booking">Booking</a>
+  </div>
+  <div class="nav-cta"><a href="#booking">Book Now</a></div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <span class="hero-tag-left">AfroGospel Artist</span>
+  <span class="hero-tag-right">Worship Minister</span>
+  <div class="hero-content">
+    <h1 class="hero-name">Promise<br>Dan</h1>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="fade-in">
+    <div class="about-label">About</div>
+    <p class="about-text">
+      I'm <strong>Promise Dan</strong> — a 19-year-old AfroGospel artist and worship minister from Uyo, Akwa Ibom State, Nigeria. Born into a priestly household, raised on the drums in my father's church, and called by God at age 17 to carry the gospel to the nations through music. My songs are not just melodies — they are warfare, healing, and revival. When you listen, I pray you don't just hear me. You hear Him.
+    </p>
+    <div class="stats">
+      <div>
+        <div class="stat-num">19</div>
+        <div class="stat-label">Years Young</div>
+      </div>
+      <div>
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Years on the Drums</div>
+      </div>
+      <div>
+        <div class="stat-num">2+</div>
+        <div class="stat-label">Public Ministrations</div>
+      </div>
+      <div>
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Nations in the Vision</div>
+      </div>
+    </div>
+  </div>
+  <div class="about-images fade-in">
+    <img src="https://i.ibb.co/84z7kvrq/promise-dan.jpg" alt="Promise Dan — Gospel Artist and Worship Minister from Uyo, Akwa Ibom, Nigeria" />
+    <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=600&q=80" alt="Promise Dan in worship" />
+    <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80" alt="Promise Dan ministering" />
+  </div>
+</section>
+
+<!-- MINISTRY -->
+<section id="ministry">
+  <div class="fade-in">
+    <div class="section-label">Ministry</div>
+    <h2 class="section-heading">What This Ministry Is Built On</h2>
+  </div>
+
+  <div class="services-list fade-in">
+    <div class="service-item">
+      <div class="service-icon">✦</div>
+      <div class="service-body">
+        <h3>Worship Leading</h3>
+        <p>Promise Dan doesn't perform worship — he enters it. Whether in a church service, revival meeting, or campus gathering, his goal is singular: usher every person in the room into the tangible presence of God. The platform is secondary. The encounter is everything.</p>
+      </div>
+      <span class="service-arrow">→</span>
+    </div>
+    <div class="service-item">
+      <div class="service-icon">♪</div>
+      <div class="service-body">
+        <h3>AfroGospel Music</h3>
+        <p>A sound rooted at the crossroads of AfroGospel and Contemporary Worship — carrying the warmth of African rhythm and the weight of the Holy Spirit. His music is crafted in the secret place and released as missionary songs, sent ahead to prepare hearts for God's arrival.</p>
+      </div>
+      <span class="service-arrow">→</span>
+    </div>
+    <div class="service-item">
+      <div class="service-icon">◈</div>
+      <div class="service-body">
+        <h3>Revival & Outreach</h3>
+        <p>From university chapels to local churches, Promise Dan has already seen God move through his young ministry. He is available for revival meetings, outreach events, and youth conferences — wherever God is building a fire, Promise Dan is ready to fan the flame.</p>
+      </div>
+      <span class="service-arrow">→</span>
+    </div>
+    <div class="service-item">
+      <div class="service-icon">◎</div>
+      <div class="service-body">
+        <h3>Songwriting & Recording</h3>
+        <p>What started as divine downloads captured on his mother's phone at age 17 has grown into a fully developed creative process. Promise Dan writes from a place of prayer and consecration — each song a seed of faith, each lyric a declaration of what God has spoken in the secret place.</p>
+      </div>
+      <span class="service-arrow">→</span>
+    </div>
+  </div>
+</section>
+
+<!-- MUSIC -->
+<section id="music">
+  <div class="portfolio-intro fade-in">
+    <div>
+      <div class="section-label">Music</div>
+      <h2 class="section-heading">The Sound of Heaven</h2>
+    </div>
+    <p>Promise Dan's debut release is being prepared for the nations. A sound forged in prayer, written in faith, and built to carry the presence of God — from Uyo, Akwa Ibom to the ends of the earth.</p>
+  </div>
+
+  <div class="projects-grid fade-in">
+    <div class="project-card">
+      <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=700&q=80" alt="Promise Dan worship session" />
+      <div class="project-info">
+        <h4>Debut Single</h4>
+        <span>Coming Soon — Stay Tuned</span>
+      </div>
+    </div>
+    <div class="project-card wide">
+      <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=700&q=80" alt="Promise Dan live ministry" />
+      <div class="project-info">
+        <h4>Live Worship Sessions</h4>
+        <span>AfroGospel · Contemporary Worship</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=700&q=80" alt="Studio recording" />
+      <div class="project-info">
+        <h4>In the Studio</h4>
+        <span>Recording · Writing · Seeking</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="featured-project fade-in">
+    <img src="https://images.unsplash.com/photo-1501612780327-45045538702b?w=1400&q=80" alt="Promise Dan — First Single Coming Soon" />
+    <div class="featured-overlay">
+      <div class="featured-tag">Coming Soon — First Release</div>
+      <h3>A Sound God Has Been Building in the Secret Place</h3>
+      <p>Promise Dan Ministry — From Uyo to the Nations</p>
+    </div>
+  </div>
+
+  <div class="view-all fade-in">
+    <a href="https://www.youtube.com/@promisedanministry" target="_blank" rel="noopener">Follow on YouTube ↓</a>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="fade-in">
+    <div class="section-label">Booking</div>
+    <h2 class="section-heading">Invite Promise Dan to Your Platform</h2>
+  </div>
+
+  <div class="booking-grid fade-in">
+    <div class="booking-info">
+      <h3>Every Stage Is a Mission Field</h3>
+      <p>Whether it's a Sunday service, a revival night, a youth conference, or a gospel concert — Promise Dan is available to minister. He carries a sound and an anointing that prepares the ground for God to move. Fill the form and we will get back to you within 24 hours.</p>
+
+      <div class="booking-types">
+        <div class="booking-type-item">Church Services & Sunday Worship</div>
+        <div class="booking-type-item">Revival & Crusade Meetings</div>
+        <div class="booking-type-item">Gospel Concerts & Events</div>
+        <div class="booking-type-item">Youth Conferences & Campus Ministry</div>
+        <div class="booking-type-item">Outreach & Evangelism Events</div>
+        <div class="booking-type-item">Special Occasions & Celebrations</div>
+      </div>
+
+      <div class="booking-contact">
+        <p>Direct inquiries:</p>
+        <a href="mailto:iampromisedan@gmail.com">iampromisedan@gmail.com</a>
+      </div>
+      <div class="booking-contact" style="margin-top:10px;">
+        <p>Phone / WhatsApp:</p>
+        <a href="tel:+2347016905148">+234 701 690 5148</a>
+      </div>
+    </div>
+
+    <div class="booking-form-wrap">
+      <form id="bookingForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="b-name">Your Name *</label>
+            <input type="text" id="b-name" name="name" required autocomplete="name" placeholder="Full name">
+          </div>
+          <div class="form-group">
+            <label for="b-email">Email Address *</label>
+            <input type="email" id="b-email" name="email" required autocomplete="email" placeholder="you@example.com">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="b-phone">Phone / WhatsApp *</label>
+            <input type="tel" id="b-phone" name="phone" required autocomplete="tel" placeholder="+234...">
+          </div>
+          <div class="form-group">
+            <label for="b-date">Preferred Date *</label>
+            <input type="date" id="b-date" name="date" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="b-event-type">Event Type *</label>
+          <select id="b-event-type" name="event-type" required>
+            <option value="">Select event type...</option>
+            <option value="church">Church Service</option>
+            <option value="revival">Revival / Crusade</option>
+            <option value="concert">Gospel Concert</option>
+            <option value="youth">Youth / Campus Conference</option>
+            <option value="outreach">Outreach / Evangelism</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="b-location">Event Location *</label>
+          <input type="text" id="b-location" name="location" required placeholder="City, State, Venue name">
+        </div>
+        <div class="form-group">
+          <label for="b-message">Additional Details</label>
+          <textarea id="b-message" name="message" rows="4" placeholder="Tell us about the event, expected attendance, and any special requirements..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Booking Request</button>
+      </form>
+      <div class="booking-success-msg" id="bookingSuccess">
+        ✓ Your booking request has been received. Promise Dan's team will respond within 24 hours. God bless you!
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-label fade-in">Testimonials</div>
+  <h2 class="section-heading fade-in">What People Are Saying</h2>
+
+  <div class="testimonial-grid fade-in">
+    <img class="testimonial-photo" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80" alt="Testimony" />
+    <div>
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-quote">
+        "Even though Promise Dan is just starting, I can feel the anointing in his music. When he ministered at our chapel, the whole room erupted in worship. This is a voice heaven has been preparing."
+      </p>
+      <div class="testimonial-author">
+        <strong>Sister Mary</strong>
+        <span>Church Leader, Lagos</span>
+      </div>
+      <div class="testimonial-dots">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="fade-in">
+    <h2>Ready to Carry His<br>Presence Together?</h2>
+    <p>From Uyo, Akwa Ibom to the nations — every platform is a mission field. Invite Promise Dan to minister at your next event, or simply follow the journey as God unfolds it.</p>
+    <div class="cta-buttons">
+      <a href="#booking" class="btn-primary">Book Promise Dan</a>
+      <a href="https://www.instagram.com/promisedan_ministry" target="_blank" rel="noopener" class="btn-ghost">Follow the Journey</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="nav-logo">Promise Dan</span>
+      <p>AfroGospel artist and worship minister from Uyo, Akwa Ibom, Nigeria. Called to carry the gospel through music — to the nations.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Navigate</h5>
+      <a href="#about">About</a>
+      <a href="#ministry">Ministry</a>
+      <a href="#music">Music</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#booking">Booking</a>
+    </div>
+    <div class="footer-col">
+      <h5>Ministry</h5>
+      <a href="#ministry">Worship Leading</a>
+      <a href="#ministry">AfroGospel Music</a>
+      <a href="#ministry">Revival & Outreach</a>
+      <a href="#ministry">Songwriting</a>
+    </div>
+    <div class="footer-col">
+      <h5>Connect</h5>
+      <a href="mailto:iampromisedan@gmail.com">iampromisedan@gmail.com</a>
+      <a href="https://www.instagram.com/promisedan_ministry" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.youtube.com/@promisedanministry" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.tiktok.com/@promisedan_music" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.facebook.com/promisedanministry" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Promise Dan Ministry. All rights reserved. · Uyo, Akwa Ibom, Nigeria</span>
+    <div class="social-links">
+      <a href="https://www.instagram.com/promisedan_ministry" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.youtube.com/@promisedanministry" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.tiktok.com/@promisedan_music" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.facebook.com/promisedanministry" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll behaviour
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > window.innerHeight * 0.85) {
+      navbar.classList.remove('light');
+      navbar.classList.add('dark');
+    } else {
+      navbar.classList.remove('dark');
+      navbar.classList.add('light');
+    }
+  });
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Testimonial dots (decorative cycle)
+  const dots = document.querySelectorAll('.dot');
+  let current = 0;
+  setInterval(() => {
+    dots[current].classList.remove('active');
+    current = (current + 1) % dots.length;
+    dots[current].classList.add('active');
+  }, 3000);
+
+  // Booking form
+  document.getElementById('bookingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name    = document.getElementById('b-name').value;
+    const email   = document.getElementById('b-email').value;
+    const phone   = document.getElementById('b-phone').value;
+    const type    = document.getElementById('b-event-type').value;
+    const date    = document.getElementById('b-date').value;
+    const location = document.getElementById('b-location').value;
+    const message = document.getElementById('b-message').value;
+    const body    = `New Booking Request\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nEvent Type: ${type}\nDate: ${date}\nLocation: ${location}\n\nDetails:\n${message}`;
+    window.location.href = `mailto:iampromisedan@gmail.com?subject=Booking Request from ${encodeURIComponent(name)}&body=${encodeURIComponent(body)}`;
+    this.style.display = 'none';
+    document.getElementById('bookingSuccess').style.display = 'block';
+    setTimeout(() => {
+      this.style.display = 'block';
+      document.getElementById('bookingSuccess').style.display = 'none';
+      this.reset();
+    }, 5000);
+  });
+</script>
+
+</body>
+</html>
